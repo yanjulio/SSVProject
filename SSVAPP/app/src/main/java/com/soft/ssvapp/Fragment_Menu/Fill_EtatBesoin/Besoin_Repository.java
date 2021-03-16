@@ -9,6 +9,8 @@ import android.widget.Toolbar;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.soft.ssvapp.AppExecutor;
 import com.soft.ssvapp.Data.Entity_Besoin;
 import com.soft.ssvapp.Data.Entity_BesoinWithEntity_DetailBesoin;
 import com.soft.ssvapp.Data.Entity_ProjectWithEntity_Besoin;
@@ -60,38 +62,94 @@ public class Besoin_Repository {
 
     public void insert(Entity_Besoin entity_besoin)
     {
-        new insertAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        try {
+            this.besoinDao.insert(entity_besoin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        new insertAsyncTask(besoinDao, isLoading).execute(entity_besoin);
     }
 
     public void update_custom(Entity_Besoin entity_besoin)
     {
-        new update_customAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                besoinDao.custom_update(entity_besoin.getDesignationEtatDeBesion(), entity_besoin.getDateRequise(),
+                        entity_besoin.getDateEmision(), entity_besoin.getDateValidation(),
+                        entity_besoin.getCodeProject(), entity_besoin.getDemandeur(),
+                        entity_besoin.getValiderPar(), entity_besoin.getCodeEtatdeBesoin(),
+                        entity_besoin.getEtat(),
+                        entity_besoin.getEtat_besoin_envoyer());
+            }
+        });
+//        new update_customAsyncTask(besoinDao, isLoading).execute(entity_besoin);
     }
 
     public int update(Entity_Besoin entity_besoin)
     {
-        new updateAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    besoinDao.update(entity_besoin);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        new updateAsyncTask(besoinDao, isLoading).execute(entity_besoin);
         return 1;
     }
 
     public void update_codeEtatBesoin(Entity_Besoin entity_besoin)
     {
-        new update_codeEtatBesoinAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                besoinDao.update_CodeEtatBesoin(
+                        entity_besoin.getCodeEtatDeBesoinOnline(),
+                        entity_besoin.getEtat(),
+                        entity_besoin.getEtat_besoin_envoyer(),
+                        entity_besoin.getIdEtatDuBesoin());
+            }
+        });
+//        new update_codeEtatBesoinAsyncTask(besoinDao, isLoading).execute(entity_besoin);
     }
 
     public void update_etatDeBesoin(Entity_Besoin entity_besoin)
     {
-        new update_etatBesoinAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                besoinDao.update_etatBesoin(entity_besoin.getEtat(),
+                        entity_besoin.getDateRequise(),
+                        entity_besoin.getIdEtatDuBesoin());
+            }
+        });
+//        new update_etatBesoinAsyncTask(besoinDao, isLoading).execute(entity_besoin);
     }
 
     public void delete(Entity_Besoin entity_besoin)
     {
-        new deleteAsyncTask(besoinDao, isLoading).execute(entity_besoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                besoinDao.delete(entity_besoin);
+            }
+        });
+//        new deleteAsyncTask(besoinDao, isLoading).execute(entity_besoin);
     }
 
     public void deleteCustom()
     {
-        new deleteCustomAsyncTask(besoinDao, isLoading).execute();
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                besoinDao.deleteCustom();
+            }
+        });
+//        new deleteCustomAsyncTask(besoinDao, isLoading).execute();
     }
 
     public void deleteAllBesoin()
@@ -237,81 +295,81 @@ public class Besoin_Repository {
             isLoading.postValue(true);
             etatDeBesoinRepositoryRetrofit.etatDeBesoinConnexion().getEtatDeBesoin().
                     enqueue(new Callback<List<EtatDeBesoinRetrofit>>() {
-                @Override
-                public void onResponse(Call<List<EtatDeBesoinRetrofit>> call, Response<List<EtatDeBesoinRetrofit>> response) {
-                    if (response.isSuccessful())
-                    {
-                        isLoading.postValue(false);
-                        Entity_Besoin entity_besoin_from_response;
-                        if(besoinAvaliderList.isEmpty())
-                        {
-                            for (int a = 0; a < response.body().size(); a++)
+                        @Override
+                        public void onResponse(Call<List<EtatDeBesoinRetrofit>> call, Response<List<EtatDeBesoinRetrofit>> response) {
+                            if (response.isSuccessful())
                             {
-                                entity_besoin_from_response = new Entity_Besoin(
-                                        response.body().get(a).getCodeEtatdeBesoin(),
-                                        response.body().get(a).getDesignationEtatDeBesion(),
-                                        response.body().get(a).getCodeProject(),
-                                        response.body().get(a).getDemandeur(),
-                                        response.body().get(a).getDateEmision(),
-                                        response.body().get(a).getDateValidation(),
-                                        response.body().get(a).getDateRequise(),
-                                        response.body().get(a).getValiderPar(),
-                                        response.body().get(a).getEtat(),
-                                        response.body().get(a).getCodeEtatdeBesoin()
-                                );
-                                entity_besoin_from_response.setEtat_besoin_envoyer(1);
-                                insert(entity_besoin_from_response);
-                            }
-                        }
-                        else
-                        {
-                            for (int a = 0; a < response.body().size(); a++)
-                            {
-                                entity_besoin_from_response = new Entity_Besoin(
-                                        response.body().get(a).getCodeEtatdeBesoin(),
-                                        response.body().get(a).getDesignationEtatDeBesion(),
-                                        response.body().get(a).getCodeProject(),
-                                        response.body().get(a).getDemandeur(),
-                                        response.body().get(a).getDateEmision(),
-                                        response.body().get(a).getDateValidation(),
-                                        response.body().get(a).getDateRequise(),
-                                        response.body().get(a).getValiderPar(),
-                                        response.body().get(a).getEtat(),
-                                        response.body().get(a).getCodeEtatdeBesoin()
-                                );
-                                entity_besoin_from_response.setEtat_besoin_envoyer(1);
-                                for (int i = 0; i < besoinAvaliderList.size(); i++)
+                                isLoading.postValue(false);
+                                Entity_Besoin entity_besoin_from_response;
+                                if(besoinAvaliderList.isEmpty())
                                 {
-                                    if (response.body().get(a).getCodeEtatdeBesoin()
-                                            .equals(besoinAvaliderList.get(i).getEntity_besoin().getCodeEtatDeBesoinOnline()))
+                                    for (int a = 0; a < response.body().size(); a++)
                                     {
-                                        entity_besoin_from_response.setIdEtatDuBesoin(
-                                                besoinAvaliderList.get(i).getEntity_besoin().getIdEtatDuBesoin());
-                                        entity_besoin_from_response.setCodeEtatdeBesoin(
-                                                besoinAvaliderList.get(i).getEntity_besoin().getCodeEtatdeBesoin());
-                                        update(entity_besoin_from_response);
-                                    }
-                                    else
-                                    {
+                                        entity_besoin_from_response = new Entity_Besoin(
+                                                response.body().get(a).getCodeEtatdeBesoin(),
+                                                response.body().get(a).getDesignationEtatDeBesion(),
+                                                response.body().get(a).getCodeProject(),
+                                                response.body().get(a).getDemandeur(),
+                                                response.body().get(a).getDateEmision(),
+                                                response.body().get(a).getDateValidation(),
+                                                response.body().get(a).getDateRequise(),
+                                                response.body().get(a).getValiderPar(),
+                                                response.body().get(a).getEtat(),
+                                                response.body().get(a).getCodeEtatdeBesoin()
+                                        );
+                                        entity_besoin_from_response.setEtat_besoin_envoyer(1);
                                         insert(entity_besoin_from_response);
                                     }
                                 }
+                                else
+                                {
+                                    for (int a = 0; a < response.body().size(); a++)
+                                    {
+                                        entity_besoin_from_response = new Entity_Besoin(
+                                                response.body().get(a).getCodeEtatdeBesoin(),
+                                                response.body().get(a).getDesignationEtatDeBesion(),
+                                                response.body().get(a).getCodeProject(),
+                                                response.body().get(a).getDemandeur(),
+                                                response.body().get(a).getDateEmision(),
+                                                response.body().get(a).getDateValidation(),
+                                                response.body().get(a).getDateRequise(),
+                                                response.body().get(a).getValiderPar(),
+                                                response.body().get(a).getEtat(),
+                                                response.body().get(a).getCodeEtatdeBesoin()
+                                        );
+                                        entity_besoin_from_response.setEtat_besoin_envoyer(1);
+                                        for (int i = 0; i < besoinAvaliderList.size(); i++)
+                                        {
+                                            if (response.body().get(a).getCodeEtatdeBesoin()
+                                                    .equals(besoinAvaliderList.get(i).getEntity_besoin().getCodeEtatDeBesoinOnline()))
+                                            {
+                                                entity_besoin_from_response.setIdEtatDuBesoin(
+                                                        besoinAvaliderList.get(i).getEntity_besoin().getIdEtatDuBesoin());
+                                                entity_besoin_from_response.setCodeEtatdeBesoin(
+                                                        besoinAvaliderList.get(i).getEntity_besoin().getCodeEtatdeBesoin());
+                                                update(entity_besoin_from_response);
+                                            }
+                                            else
+                                            {
+                                                insert(entity_besoin_from_response);
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                Erreur(response.code());
                             }
                         }
 
-                    }
-                    else
-                    {
-                        Erreur(response.code());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<EtatDeBesoinRetrofit>> call, Throwable t) {
-                    isLoading.postValue(false);
-                    Toast.makeText(application, "Problème de connexion", Toast.LENGTH_LONG).show();
-                }
-            });
+                        @Override
+                        public void onFailure(Call<List<EtatDeBesoinRetrofit>> call, Throwable t) {
+                            isLoading.postValue(false);
+                            Toast.makeText(application, "Problème de connexion", Toast.LENGTH_LONG).show();
+                        }
+                    });
         }
     }
 

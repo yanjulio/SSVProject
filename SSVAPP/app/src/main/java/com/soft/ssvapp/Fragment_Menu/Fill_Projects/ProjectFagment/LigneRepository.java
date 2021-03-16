@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.soft.ssvapp.AppExecutor;
 import com.soft.ssvapp.Data.Entity_Ligne;
 import com.soft.ssvapp.Data.Entity_ProjectWithEntity_Ligne;
 import com.soft.ssvapp.Data.Kp_BatimentData;
@@ -61,7 +63,7 @@ public class LigneRepository {
                 if (response.isSuccessful())
                 {
                     isLoding_value.postValue(false);
-                    insert(entity_ligne);
+//                    insert(entity_ligne);
                 }
                 else
                 {
@@ -179,21 +181,47 @@ public class LigneRepository {
 
     public void insert(Entity_Ligne entity_ligne)
     {
-//        insertAsyncTask insert =
-                new insertAsyncTask(tLigneDao).execute(entity_ligne);
+//        Toast.makeText(
+//                application,
+//                " data : " + entity_ligne.getDesignationLigne() + "\n" +
+//                        entity_ligne.getCodeLigne() + "\n" +
+//                        entity_ligne.getPrevision(), Toast.LENGTH_LONG).show();
+        try {
+//                this.insertResponse =
+            tLigneDao.insert(entity_ligne);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//                new insertAsyncTask(tLigneDao).execute(entity_ligne);
 //        insert.execute(entity_ligne);
 //        return insert.getBackResponse();
     }
 
     public int update(Entity_Ligne entity_ligne)
     {
-        new updateAsyncTask(tLigneDao).execute(entity_ligne);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    tLigneDao.update(entity_ligne);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        new updateAsyncTask(tLigneDao).execute(entity_ligne);
         return 1;
     }
 
     public void deleteCustom(String codeProjet)
     {
-        new deletetCustomAsyncTask(tLigneDao).execute(codeProjet);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                tLigneDao.deleteCustom(codeProjet);
+            }
+        });
+//        new deletetCustomAsyncTask(tLigneDao).execute(codeProjet);
     }
 
     public void delete(Entity_Ligne entity_ligne)
@@ -216,11 +244,13 @@ public class LigneRepository {
 
     private void insertOnlineLigne(String codeProjet)
     {
+        isLoding_value.postValue(true);
         ligneRepository.ligneConnexion().getLignesParProjet(codeProjet).enqueue(new Callback<List<LigneRetrofit>>() {
             @Override
             public void onResponse(Call<List<LigneRetrofit>> call, Response<List<LigneRetrofit>> response) {
                 if (response.isSuccessful())
                 {
+                    isLoding_value.postValue(false);
                     if (ligneLiveDataList.isEmpty())
                     {
                         for (int a = 0; a < response.body().size(); a++)
@@ -282,6 +312,7 @@ public class LigneRepository {
 
             @Override
             public void onFailure(Call<List<LigneRetrofit>> call, Throwable t) {
+                isLoding_value.postValue(false);
                 Toast.makeText(application, "Connexion Problem.", Toast.LENGTH_LONG).show();
             }
         });
@@ -306,7 +337,7 @@ public class LigneRepository {
         protected Void doInBackground(Entity_Ligne... entity_lignes) {
             try {
 //                this.insertResponse =
-                        this.ligneDao.insert(entity_lignes[0]);
+                this.ligneDao.insert(entity_lignes[0]);
             } catch (Exception e) {
                 e.printStackTrace();
             }

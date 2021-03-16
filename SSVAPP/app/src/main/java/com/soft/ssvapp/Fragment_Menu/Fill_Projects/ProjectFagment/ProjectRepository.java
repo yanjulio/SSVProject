@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.common.internal.Objects;
+import com.soft.ssvapp.AppExecutor;
 import com.soft.ssvapp.Data.Entity_Project;
 import com.soft.ssvapp.Data.Kp_BatimentData;
 import com.soft.ssvapp.Data.tProjectDao;
@@ -47,12 +48,35 @@ public class ProjectRepository {
 
     public void insert(Entity_Project entity_project)
     {
-        new insertAsyncTask(projectDao, isdownloaing).execute(entity_project);
+//        Toast.makeText(application, "j dois inserer", Toast.LENGTH_LONG).show();
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    projectDao.insert(entity_project);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        try {
+//            projectDao.insert(entity_project);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        new insertAsyncTask(projectDao, isdownloaing).execute(entity_project);
     }
 
     public int update(Entity_Project entity_project)
     {
-        new updateAsyncTask(projectDao, isdownloaing).execute(entity_project);
+//        Toast.makeText(application, "c'est un autre modification", Toast.LENGTH_LONG).show();
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                projectDao.update(entity_project);
+            }
+        });
+//        new updateAsyncTask(projectDao, isdownloaing).execute(entity_project);
         return 1;
     }
 
@@ -60,7 +84,7 @@ public class ProjectRepository {
     {
         ProjetRetrofit projetRetrofit =
                 new ProjetRetrofit(
-                  entity_project.getCodeProject(), entity_project.getDesignationProject(), entity_project.getLieu(),
+                        entity_project.getCodeProject(), entity_project.getDesignationProject(), entity_project.getLieu(),
                         entity_project.getDateDebut(), entity_project.getDateFin(), entity_project.getChefDuProjet(),
                         entity_project.getEtat(), entity_project.getCompte()
                 );
@@ -74,7 +98,16 @@ public class ProjectRepository {
                     isdownloaing.postValue(false);
                     if (response.body() == true)
                     {
-                        new updatCustomAsyncTask(projectDao, isdownloaing).execute(entity_project);
+//                        Toast.makeText(application, "je modifie", Toast.LENGTH_LONG).show();
+                        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                projectDao.custom_update(entity_project.getCodeProject(),
+                                        entity_project.getDesignationProject(), entity_project.getDateDebut(),
+                                        entity_project.getDateFin(), entity_project.getLieu(), entity_project.getChefDuProjet());
+                            }
+                        });
+//                        new updatCustomAsyncTask(projectDao, isdownloaing).execute(entity_project);
                         Toast.makeText(application, "Modification bien faite", Toast.LENGTH_LONG).show();
                     }
                     else
@@ -109,9 +142,18 @@ public class ProjectRepository {
 
     public void UpdateListProjet()
     {
-        listProjet.clear();
-        listProjet = projectDao.getListProjet();
-        InsertOnlineDataToRoom(listProjet);
+//        Toast.makeText(application, "J'update la liste de project", Toast.LENGTH_LONG).show();
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                listProjet.clear();
+                listProjet = projectDao.getListProjet();
+                InsertOnlineDataToRoom(listProjet);
+            }
+        });
+//        listProjet.clear();
+//        listProjet = projectDao.getListProjet();
+//        InsertOnlineDataToRoom(listProjet);
     }
 
     public void InsertOnlineDataToRoom(List<Entity_Project> entity_projects)

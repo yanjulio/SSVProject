@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.soft.ssvapp.AppExecutor;
 import com.soft.ssvapp.Data.Entity_BesoinWithEntity_DetailBesoin;
 import com.soft.ssvapp.Data.Entity_DetailBesoin;
 import com.soft.ssvapp.Data.Entity_DetailBesoinWithEntity_Article;
@@ -66,79 +68,79 @@ public class DetailBesoinRepository {
         Call<List<DetailsEtatDeBesoinRetrofit>> details_retrofit =
                 repository_detailsEtatBesoin.getDetailsEtatDeBesoinConnexion().getListDetailsBesoin(codeEtatDeBesoin);
         progressbarObservable.postValue(true);
-                details_retrofit.enqueue(new Callback<List<DetailsEtatDeBesoinRetrofit>>() {
-                    @Override
-                    public void onResponse(Call<List<DetailsEtatDeBesoinRetrofit>> call,
-                                           Response<List<DetailsEtatDeBesoinRetrofit>> response) {
-                        if (response.isSuccessful())
+        details_retrofit.enqueue(new Callback<List<DetailsEtatDeBesoinRetrofit>>() {
+            @Override
+            public void onResponse(Call<List<DetailsEtatDeBesoinRetrofit>> call,
+                                   Response<List<DetailsEtatDeBesoinRetrofit>> response) {
+                if (response.isSuccessful())
+                {
+                    progressbarObservable.postValue(false);
+                    if (detailBesoinList.isEmpty())
+                    {
+                        for (int e = 0; e < response.body().size(); e++)
                         {
-                            progressbarObservable.postValue(false);
-                            if (detailBesoinList.isEmpty())
+                            Entity_DetailBesoin entity_detailBesoin =
+                                    new Entity_DetailBesoin(
+                                            response.body().get(e).getIdDetailEB(),
+                                            response.body().get(e).getCodeEtatdeBesoin(),
+                                            response.body().get(e).getCodeArticle(),
+                                            response.body().get(e).getCodeLigne(),
+                                            response.body().get(e).getLibelleDetail(),
+                                            response.body().get(e).getQte(),
+                                            response.body().get(e).getPu(),
+                                            response.body().get(e).getEntree(),
+                                            response.body().get(e).getSortie()
+                                    );
+                            insert(entity_detailBesoin);
+                        }
+                    }
+                    else
+                    {
+                        for (int c = 0; c < response.body().size(); c++)
+                        {
+                            Entity_DetailBesoin entity_detailBesoin =
+                                    new Entity_DetailBesoin(
+                                            response.body().get(c).getIdDetailEB(),
+                                            response.body().get(c).getCodeEtatdeBesoin(),
+                                            response.body().get(c).getCodeArticle(),
+                                            response.body().get(c).getCodeLigne(),
+                                            response.body().get(c).getLibelleDetail(),
+                                            response.body().get(c).getQte(),
+                                            response.body().get(c).getPu(),
+                                            response.body().get(c).getEntree(),
+                                            response.body().get(c).getSortie()
+                                    );
+
+                            for (int i = 0; i < detailBesoinList.size(); i++)
                             {
-                                for (int e = 0; e < response.body().size(); e++)
+                                if (detailBesoinList.get(i).getDetailBesoin().getIdDetailEBOnline()
+                                        ==entity_detailBesoin.getIdDetailEBOnline()
+                                        || detailBesoinList.get(i).getDetailBesoin().getIdDetailEBOnline()==0)
                                 {
-                                    Entity_DetailBesoin entity_detailBesoin =
-                                            new Entity_DetailBesoin(
-                                                    response.body().get(e).getIdDetailEB(),
-                                                    response.body().get(e).getCodeEtatdeBesoin(),
-                                                    response.body().get(e).getCodeArticle(),
-                                                    response.body().get(e).getCodeLigne(),
-                                                    response.body().get(e).getLibelleDetail(),
-                                                    response.body().get(e).getQte(),
-                                                    response.body().get(e).getPu(),
-                                                    response.body().get(e).getEntree(),
-                                                    response.body().get(e).getSortie()
-                                            );
+                                    entity_detailBesoin.setIdDetailEB(
+                                            detailBesoinList.get(i).getDetailBesoin().getIdDetailEB());
+                                    update(entity_detailBesoin);
+                                }
+                                else
+                                {
                                     insert(entity_detailBesoin);
                                 }
                             }
-                            else
-                            {
-                                for (int c = 0; c < response.body().size(); c++)
-                                {
-                                    Entity_DetailBesoin entity_detailBesoin =
-                                            new Entity_DetailBesoin(
-                                                    response.body().get(c).getIdDetailEB(),
-                                                    response.body().get(c).getCodeEtatdeBesoin(),
-                                                    response.body().get(c).getCodeArticle(),
-                                                    response.body().get(c).getCodeLigne(),
-                                                    response.body().get(c).getLibelleDetail(),
-                                                    response.body().get(c).getQte(),
-                                                    response.body().get(c).getPu(),
-                                                    response.body().get(c).getEntree(),
-                                                    response.body().get(c).getSortie()
-                                            );
-
-                                    for (int i = 0; i < detailBesoinList.size(); i++)
-                                    {
-                                        if (detailBesoinList.get(i).getDetailBesoin().getIdDetailEBOnline()
-                                                ==entity_detailBesoin.getIdDetailEBOnline()
-                                                || detailBesoinList.get(i).getDetailBesoin().getIdDetailEBOnline()==0)
-                                        {
-                                            entity_detailBesoin.setIdDetailEB(
-                                                    detailBesoinList.get(i).getDetailBesoin().getIdDetailEB());
-                                            update(entity_detailBesoin);
-                                        }
-                                        else
-                                        {
-                                            insert(entity_detailBesoin);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Erreur(response.code());
                         }
                     }
+                }
+                else
+                {
+                    Erreur(response.code());
+                }
+            }
 
-                    @Override
-                    public void onFailure(Call<List<DetailsEtatDeBesoinRetrofit>> call, Throwable t) {
-                        progressbarObservable.postValue(false);
-                        Toast.makeText(application, "Connexion problem. check your connexion and try again.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            @Override
+            public void onFailure(Call<List<DetailsEtatDeBesoinRetrofit>> call, Throwable t) {
+                progressbarObservable.postValue(false);
+                Toast.makeText(application, "Connexion problem. check your connexion and try again.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public MutableLiveData<Boolean> isLoading()
@@ -148,7 +150,12 @@ public class DetailBesoinRepository {
 
     public void insert(Entity_DetailBesoin entity_detailBesoin)
     {
-        new insertAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
+        try {
+            detailBesoinDao.insert(entity_detailBesoin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        new insertAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
     }
 
     public void deleteDetailOnline(Entity_DetailBesoin entity_detailBesoin)
@@ -246,13 +253,37 @@ public class DetailBesoinRepository {
 
     public int update(Entity_DetailBesoin entity_detailBesoin)
     {
-        new updateDetailAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    detailBesoinDao.update(entity_detailBesoin.getLibelleDetail(),
+                            entity_detailBesoin.getQte(),
+                            entity_detailBesoin.getPu(), entity_detailBesoin.getIdDetailEB());
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        new updateDetailAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
         return -1;
     }
 
     public void deleteDetail(Entity_DetailBesoin entity_detailBesoin)
     {
-        new deleteDetailAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
+        AppExecutor.getInstance().mainThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    detailBesoinDao.delete(entity_detailBesoin);
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        new deleteDetailAsyncTask(detailBesoinDao, progressbarObservable).execute(entity_detailBesoin);
     }
 
     public void deleteAll()

@@ -49,7 +49,7 @@ public class ArticleDialog extends DialogFragment {
         searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(onQueryTextListener);
         adapter = new ArticleDialogAdapter(getActivity());
-        setList();
+//        setList();
         listView_article.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
