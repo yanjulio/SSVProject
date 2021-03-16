@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.Fill_Operation.Details_EtatBesoinValider">
+
+    <LinearLayout
+        android:id="@+id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/kp_tool_bar"/>
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/title_afficher_details_besoin_valider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        app:cardBackgroundColor="@color/linesBackgroundColor">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_cancel_details_besoin_valider"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:drawableLeft="@drawable/ic_close_black_24dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_titre_details_besoin_valider"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="8"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Titre"-->
+<!--                android:paddingLeft="-10dp"-->
+<!--                android:textAppearance="?textAppearanceHeadline6"-->
+<!--                android:gravity="center"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </com.google.android.material.card.MaterialCardView>-->
+
+    <!--    l'entete de details-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_entete_details"
+        android:layout_below="@id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/libelle_entete_detail_besoin_valider"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Libelle"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/qte_entete_detail_besoin_valider"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Qte"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/pu_entete_detail_besoin_valider"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Pu"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/article_entete_detail_besoin_valider"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Article"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/total_entete_detail_besoin_valider"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="Total"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--    Details here-->
+
+    <ListView
+        android:id="@+id/listView_details_besoin_valider"
+        android:layout_below="@+id/cardView_entete_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@id/linear_total_bottom"
+        android:orientation="horizontal"
+        android:background="?attr/colorPrimaryDark"
+        android:id="@+id/linear_total_bottom">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:text="Total"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAppearance="?textAppearanceBody1"
+            android:gravity="center"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/textView_total_value_detail_besoin_valider"
+            android:textColor="@color/white"
+            android:textAppearance="?textAppearanceBody2"
+            android:gravity="center"
+            android:text="$total"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_detail_valider_etat_besoin"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+</RelativeLayout>

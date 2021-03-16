@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.FillArticle.ListArticle">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/entete_article_titre_colonne"
+        android:layout_below="@+id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear_article_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="Désignation"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="@color/textColorPrimary"
+                    android:paddingLeft="5dp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:text="Prix Achat"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    android:text="Prix Vente"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView_article"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--    Details here-->
+
+    <ListView
+        android:id="@+id/listView_article"
+        android:layout_below="@+id/entete_article_titre_colonne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/kp_tool_bar"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_list_article"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:id="@+id/float_add_list_article"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        app:backgroundTint="@color/purple_700"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="40dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_playlist_add_24"/>
+
+</RelativeLayout>

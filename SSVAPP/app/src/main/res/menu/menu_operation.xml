@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/item_approvisionement_operation"
+        android:title="Approvisionement caisse principale."/>
+
+    <item
+        android:id="@+id/item_ravitaement_operation"
+        android:title="Ravitaillement caisse projet."/>
+
+    <item
+        android:id="@+id/item_comptabilite.operation"
+        android:title="Comptabilté."/>
+
+</menu>

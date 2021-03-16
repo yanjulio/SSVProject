@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.Fill_EtatBesoin.Nouveau_Besoin">
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bar_top_etatBesoin"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <include layout="@layout/kp_tool_bar"/>-->
+
+<!--    </LinearLayout>-->
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_top_etatBesoin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar_besoin"
+            style="@style/Widget.Kp.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:paddingStart="12dp"
+            android:paddingRight="12dp"
+            android:paddingEnd="12dp"
+            android:paddingLeft="12dp"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_baseline_clear_24"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView_nouveau_projet"
+        android:layout_below="@+id/bar_top_etatBesoin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/etat_besoin_ligne_input"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinner_code_ligne_nouveaux_besoin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?textAppearanceBody2"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_descriptions_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/edit_new_descriptions_besoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:minLines="6"
+                    android:gravity="top|left"
+                    android:scrollbars="vertical"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/kp_descriptions_besoin"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/projet_lieu_input"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/text_code_project"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_weight="4"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:hint="@string/kp_spinner_code_projet"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="@color/textColorPrimary"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:gravity="center_vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:paddingLeft="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="match_parent"/>&ndash;&gt;-->
+
+<!--                    <Spinner-->
+<!--                        android:id="@+id/spinner_code_projet"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:textAppearance="?textAppearanceBody2"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/projet_supervisor_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_demandeur_besoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="@string/kp_demandeur_besoin"
+                    android:textAppearance="?textAppearanceBody2"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/edit_details_besoin"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:text="Ajouter les details"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textColor="@color/textColorPrimary"-->
+<!--                    android:textAppearance="?textAppearanceBody2"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

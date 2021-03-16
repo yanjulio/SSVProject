@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_article_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textView_article_model_designation"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="Ligne"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/textColorPrimary"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/textView_article_model_prixAchat"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal"
+                android:textColor="@color/textColorPrimary"
+                android:text="Prix Achat"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/textView_article_model_prixVente"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal"
+                android:textColor="@color/textColorPrimary"
+                android:text="Prix Vente"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

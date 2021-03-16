@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment_Menu.Fill_EtatBesoin.AjouterDetailBesoin">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_top_ajouterdetailActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar_ajouteBesoin"
+            style="@style/Widget.Kp.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:paddingStart="12dp"
+            android:paddingRight="12dp"
+            android:paddingEnd="12dp"
+            android:paddingLeft="12dp"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_baseline_clear_24"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_description_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Ajouter le detail"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingLeft="5dp"-->
+<!--                android:textColor="@color/textColorPrimary"-->
+<!--                android:textAppearance="?textAppearanceHeadline6"-->
+<!--                android:layout_marginBottom="5dp"/>-->
+
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/projet_lieu_input"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_height="50dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <Spinner-->
+<!--                        android:id="@+id/spinner_code_ligne"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:textAppearance="?textAppearanceBody2"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/projet_article_input"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+<!--                    <Spinner-->
+<!--                        android:id="@+id/spinner_article"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="3"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:textAppearance="?textAppearanceBody2"/>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textView_article"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Article"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_select_article"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_baseline_expand_more_24"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_details_besoin_ajout_article"
+                    style="@style/Widget.Kp.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/kp_ajout_article"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_qte_ajouter_detail_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_qte_ajouter_detail_besoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:hint="@string/kp_qte_ajouter_detail"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_pu_ajouter_detail_besoin_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_pu_ajouter_detail_besoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:hint="@string/kp_pu_ajouter_detail_besoin"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_libelle_ajouter_detail_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_libelle_ajouter_detail_besoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="@color/textColorPrimary"
+                    android:hint="@string/kp_libelle__ajouter_detail_besoin"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btn_submit_ajouter_details"-->
+<!--                style="@style/Widget.Kp.Button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Ok"-->
+<!--                android:layout_gravity="right"/>-->
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

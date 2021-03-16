@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_rapport_eb_par_projet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/libelle_model_rapport_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:textSize="16dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/qte_model_rapport_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/pu_model_rapport_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/article_model_rapport_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/total_model_rapport_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

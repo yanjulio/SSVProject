@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.Navigation.DashBoard">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/dash_boad_scrollView"
+            android:layout_below="@+id/bar_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/menuGridBackgroundColor"
+            android:elevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/linear_chart"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.anychart.AnyChartView
+                            android:id="@+id/any_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:max="80"
+                            android:id="@+id/progress_bar_chart"
+                            android:indeterminate="true"
+                            android:layout_gravity="center"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <ListView
+                    android:layout_below="@+id/linear_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/list_dashboard"/>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/bar_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/kp_tool_bar"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+</FrameLayout>

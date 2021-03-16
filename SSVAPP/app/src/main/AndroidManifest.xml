@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.soft.ssvapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icone_64"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icone_64"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SSVAPP"
+        android:usesCleartextTraffic="true">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- pour la connexion aussi de version superieur -->
+
+        <activity android:name=".Fragment_Menu.CompteAjout.CompteActivity"></activity>
+        <activity android:name=".Utilisateurs.CreerUtilisateurAtivity"></activity>
+        <activity android:name=".Utilisateurs.GestionUtilisateur"></activity>
+        <activity android:name=".Utilisateurs.ValiderUtilisateur"></activity>
+        <activity
+            android:name=".Fragment_Menu.All_specificProject.RapportPartProjetEtatBesoin.RapportDetailEB.RapportDetailEBParProjet"/>
+        <activity
+            android:name=".Fragment_Menu.All_specificProject.RapportReferenceEtatBesoinCons.RapportReferenceEtatBesoinConsActivity">
+        </activity>
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportArticleParLigne.RapportArticleParLigneActivity" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportLignePartArticle.RapportLigneParArticle" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportParProjetArticles.RapportArticle" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportPartProjetEtatBesoin.RapportEBParProjet" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportParProjet" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.BalanceGroupeDe" />
+        <activity android:name=".Fragment_Menu.FillPayements.Details.PayementDetails" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.RapportSuiviProjet.DetailSuiviProjet" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.RapportEtatDeBesoin.RapportDetailEtatBesoin.DetailBesoinRapport" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.RapportEtatDeBesoin.EtatBesoinRapport" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.RapportSuiviProjet.SuiviProjet" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.DetailRapport.DetailBalance" />
+        <activity android:name=".Fragment_Menu.Fill_Rapport.Balance" />
+        <activity android:name=".Fragment_Menu.FillArticle.ListArticle" />
+        <activity android:name=".Fragment_Menu.Fill_EtatBesoin.AjouterArticle" />
+        <activity android:name=".Fragment_Menu.Fill_Projects.ProjectFagment.LigneActivity" />
+        <activity android:name=".Fragment_Menu.FillPayements.FormulairePayement_Ravitaement_Cpte" /> <!-- pour la connexion de version superiere -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- pour la connexion aussi de version superieur -->
+        <activity android:name=".Fragment_Menu.Fill_EtatBesoin.AjouterDetailBesoinActive" />
+        <activity android:name=".Fragment_Menu.All_specificProject.Specific_Project" />
+        <activity android:name=".Fragment_Menu.Navigation.VerificationCompte" />
+        <activity android:name=".Fragment_Menu.Navigation.Comptabilite" />
+        <activity android:name=".Fragment_Menu.Navigation.Payements" />
+        <activity
+            android:name=".Fragment_Menu.Fill_Operation.Details_EtatBesoinValider"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".Fragment_Menu.Fill_Projects.ProjectFagment.ErrorDeConnexionProjet" />
+        <activity
+            android:name=".Fragment_Menu.Fill_EtatBesoin.Details_Besoin"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".Fragment_Menu.Fill_EtatBesoin.Nouveau_Besoin" />
+        <activity android:name=".Fragment_Menu.Fill_Projects.ProjectFagment.Nouveau_Projet" />
+        <activity android:name=".Fragment_Menu.Navigation.Etat_Besoin" /> <!-- android:parentActivityName=".Fragment_Menu.All_specificProject.Specific_Project" -->
+        <activity android:name=".Fragment_Menu.Navigation.Operation_Cpte" /> <!-- android:parentActivityName=".Fragment_Menu.All_specificProject.Specific_Project" -->
+        <activity android:name=".Fragment_Menu.Navigation.Rapport" />
+        <activity
+            android:name=".Fragment_Menu.Fill_Projects.ProjectFagment.Details"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".Fragment_Menu.Menu_Principale" />
+        <activity
+            android:name=".Login"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".Fragment_Menu.Navigation.Menus_All" />
+        <activity android:name=".Fragment_Menu.Navigation.Projects" />
+        <activity android:name=".Fragment_Menu.Navigation.DashBoard" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".Firebasefiles.MyMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVER" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

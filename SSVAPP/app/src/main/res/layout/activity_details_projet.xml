@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment_Menu.Fill_Projects.ProjectFagment.Details">
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/title_details"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        app:cardBackgroundColor="@color/linesBackgroundColor">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_cancel_details"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:drawableLeft="@drawable/ic_close_black_24dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_titre_details"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="8"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Titre"-->
+<!--                android:paddingLeft="-10dp"-->
+<!--                android:textAppearance="?textAppearanceHeadline6"-->
+<!--                android:gravity="center"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </com.google.android.material.card.MaterialCardView>-->
+
+<!--    Details here-->
+
+    <ScrollView
+        android:layout_below="@+id/bar_top"
+        android:id="@+id/scrollView_detials"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear_top_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+<!--                Code projet-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Code  :"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+<!--                        <com.google.android.material.textfield.TextInputLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:defaultFocusHighlightEnabled="false"-->
+<!--                            app:helperTextEnabled="false"-->
+<!--                            app:errorEnabled="true">-->
+
+                            <EditText
+                                android:id="@+id/edit_code_projet"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:inputType="text"
+                                android:enabled="false"
+                                android:text=" P001"
+                                android:gravity="center_vertical"
+                                android:textAppearance="?textAppearanceBody2"/>
+
+<!--                        </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+<!--                Lieu du projet-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Lieu  :"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                        <EditText
+                            android:id="@+id/edit_lieu_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:inputType="text"
+                            android:text=" Beni."
+                            android:enabled="false"
+                            android:gravity="center_vertical"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_edit_lieu_projet"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:drawableLeft="@drawable/ic_baseline_edit_24"/>
+
+                </LinearLayout>
+
+<!--                Chef du projet-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Chef du Projet  :"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                        <EditText
+                            android:id="@+id/edit_chef_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:inputType="text"
+                            android:enabled="false"
+                            android:text=" Ir.Osé."
+                            android:gravity="center_vertical"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_edit_chef_projet"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:drawableLeft="@drawable/ic_baseline_edit_24"/>
+
+                </LinearLayout>
+
+<!--                Date debut-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Date du début  :"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                        <EditText
+                            android:id="@+id/edit_debut_date_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:inputType="text"
+                            android:enabled="false"
+                            android:text=" Date du debut.  "
+                            android:gravity="center_vertical"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_edit_debut_date_projet"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_date_range_24"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="Date de Fin  :"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                        <EditText
+                            android:id="@+id/edit_fin_date_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:inputType="text"
+                            android:enabled="false"
+                            android:text=" Date de fin.  "
+                            android:gravity="center_vertical"
+                            android:textAppearance="?textAppearanceBody2"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_edit_fin_date_projet"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_date_range_24"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/linesBackgroundColor"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_lignes"
+                style="@style/Widget.Kp.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LIGNES"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/white"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/linesBackgroundColor"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Déscription"
+                android:gravity="center_vertical"
+                android:textAppearance="?textAppearanceBody2"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:paddingLeft="5dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/edit_descriptions_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descriptions here."
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textAppearance="?textAppearanceBody1"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_ajout_article"
+                    style="@style/Widget.Kp.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/kp_ajout_article"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/kp_tool_bar"/>
+
+    </LinearLayout>
+
+<!--    Fin Details-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_modifier_details"
+        style="@style/Widget.Kp.Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="Soumettre"/>
+
+</RelativeLayout>

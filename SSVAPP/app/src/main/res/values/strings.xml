@@ -1,0 +1,80 @@
+<resources>
+<!--    SSV APP-->
+<!--    KVG-->
+    <string name="app_name">SSV APP</string>
+    <string name="kp_login_title">Login</string>
+    <string name="kp_app_name">SSV APP</string>
+    <string name="kp_username">Username</string>
+    <string name="kp_password">Password</string>
+    <string name="kp_connect_button">CONNECT</string>
+    <string name="kp_menu_online_settings">Serveur en ligne</string>
+    <string name="kp_menu_local_settings">Serveur local</string>
+    <string name="kp_title_global_serveur">Settings</string>
+    <string name="kp_error_password">Mot de passe inferieur à trois charactères</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kp_projects_label">PROJETS</string>
+    <string name="kp_rapport">RAPPORT</string>
+    <string name="kp_operation_cpte">OPERATION COMPTABILITE</string>
+    <string name="kp_etat_besoin">ETAT DE BESOIN</string>
+    <string name="kp_dashboard">DASHBOARD</string>
+    <string name="kp_descriptions_projet">Décrit le projet</string>
+    <string name="kp_supervisor_projet">Nom du superviseur</string>
+    <string name="kp_lieu_projet">Lieu du Projet</string>
+    <string name="kp_datedebut_projet">Date debut du Projet</string>
+    <string name="kp_datefin_projet">Date fin du Projet</string>
+    <string name="kp_code_besoin_title">Code</string>
+    <string name="kp_designation_besoin_title">Libellé</string>
+    <string name="kp_save_nouveau_besoin">Save</string>
+    <string name="kp_descriptions_besoin">Description du Besoin.</string>
+    <string name="kp_demandeur_besoin">Votre nom.</string>
+    <string name="kp_spinner_code_projet">Code du projet</string>
+    <string name="kp_libelle_detail_besoin">Libelle detail</string>
+    <string name="kp_libelle__ajouter_detail_besoin">Libellé</string>
+    <string name="kp_qte_ajouter_detail">Quantité</string>
+    <string name="kp_pu_ajouter_detail_besoin">Prix unitaire</string>
+    <string name="kp_ajouter_ligne">Nouvelle ligne</string>
+    <string name="kp_modifier_ligne">Modifier ligne</string>
+    <string name="kp_ajouter_prevision">Prévision</string>
+    <string name="kp_save_details_besoin_active">Ajouter details</string>
+    <string name="kp_save_payement">Payement</string>
+    <string name="kp_payement_montant">Montant</string>
+    <string name="kp_libelle_payement">Libellé</string>
+    <string name="kp_data_operation">Date Opération</string>
+    <string name="kp_ajout_article">ajouter article</string>
+    <string name="kp_designation_article">Désignation</string>
+    <string name="kp_prixAchat_article">Prix d\'achat</string>
+    <string name="kp_prixVente_article">Prix de vente</string>
+    <string name="kp_critique_article">Critique</string>
+    <string name="kp_ajouter_ok_article">Ok</string>
+    <string name="kp_ajouter_ajouter_article">ajouter</string>
+    <string name="kp_hint_balance_date1">Date debut</string>
+    <string name="kp_hint_balance_date2">Date fin</string>
+    <string name="kp_supprimer_verificaiton">Code de vérification</string>
+
+    <array name="compte_array">
+        <item>ADMIN</item>
+        <item>CAISSIER</item>
+        <item>DECLARA</item>
+    </array>
+
+    <string-array name="article">
+        <item></item>
+    </string-array>
+    <string name="title_activity_rapport_article">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="Kp_designation_utilisateur">Désignation</string>
+    <string name="Kp_fonction_utilisateur">Fonction</string>
+    <string name="Kp_designation_compte">Libellé</string>
+    <string name="freeman_Num_compte">Numéro du Compte</string>
+    <string name="kp_code_verification">Code de vérification</string>
+    <string name="kp_password_valide">Veillez entrer un mot de passe valide</string>
+</resources>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_top_rapport_detail_eb_par_projet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar_rapport_detail_eb_par_projet"
+            style="@style/Widget.Kp.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:paddingStart="12dp"
+            android:paddingRight="12dp"
+            android:paddingEnd="12dp"
+            android:paddingLeft="12dp"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_baseline_clear_24"
+            app:title="@string/app_name"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_rapport_detail_eb_par_projet"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_entete_rapport_detail_eb_par_projet"
+        android:layout_below="@id/bar_top_rapport_detail_eb_par_projet"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/libelle_entete_rapport_detail_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Libelle"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/qte_entete_rapport_detail_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Qte"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/pu_entete_rapport_detail_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Pu"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/article_entete_rapport_detail_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Article"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/total_entete_rapport_detail_eb_par_projet"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Total"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--    Details here-->
+
+    <ListView
+        android:id="@+id/listView_rapport_detail_eb_par_projet"
+        android:layout_above="@id/linear_total_bottom"
+        android:layout_below="@+id/cardView_entete_rapport_detail_eb_par_projet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    // ICI LA LISTE DE DETAILLE eb generale
+    <LinearLayout
+        android:id="@+id/linear_detail_eb_generale_rapport"
+        android:layout_above="@+id/linear_total_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageView_expand_less_rapport"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_expand_more_24"/>
+
+        <LinearLayout
+            android:id="@+id/linear_details_mvt_rapport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:background="@color/purple_700">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Date Op."/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Libellé"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Débit"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Solde"/>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listView_detail_eb_generale_rapport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView_expand_rapport"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_expand_less_24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/colorPrimaryDark"
+        android:id="@+id/linear_total_bottom">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:text="Reste"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:textAppearance="?textAppearanceBody1"
+            android:gravity="center"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/textView_total_value_rapport_detail_eb_par_projet"
+            android:textColor="@color/textColorPrimary"
+            android:textAppearance="?textAppearanceBody2"
+            android:gravity="center"
+            android:text="$total"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.All_specificProject.RapportReferenceEtatBesoinCons.RapportReferenceEtatBesoinConsActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_entete_details_eb_cons"
+        android:layout_below="@id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Désign."
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Date"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:text="Qte"
+                android:paddingLeft="5dp"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Pu"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Total"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/kp_tool_bar"/>
+
+    </LinearLayout>
+
+    <!--    Details here-->
+
+    <ListView
+        android:id="@+id/listView_eb_cons"
+        android:layout_below="@+id/cardView_entete_details_eb_cons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_eb_cons"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+</RelativeLayout>

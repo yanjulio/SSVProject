@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.All_specificProject.RapportParProjet">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linear_top_rapport_projet_par"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccentIconMyWhite"
+                android:background="@drawable/layout_back_ground_top_projet">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/linear_project_titre"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/designation_par_projet"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="DESIGNATION PROJET"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="CONSOM."
+                                android:paddingLeft="10dp"
+                                android:textStyle="bold"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            <TextView
+                                android:id="@+id/consommation_par_projet"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="CONSOMMATION"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="PREVISION"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            <TextView
+                                android:id="@+id/prevision_par_projet"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="PREVISION"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="TAUX CONS."
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            <TextView
+                                android:id="@+id/taux_consommation_par_projet"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="TAUX DE CONS."
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceBody2"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/linear_date_periode_etat_besoin_rapport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--            date1-->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:text="Du :"
+                                    android:textSize="16sp"
+                                    android:textColor="@android:color/black"
+                                    android:gravity="center"/>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="5"
+                                    android:layout_height="match_parent"
+                                    android:enabled="false"
+                                    android:hint="@string/kp_hint_balance_date1"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="5dp"
+                                    android:textColor="@android:color/black"
+                                    android:id="@+id/text_date1_par_projet"/>
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_baseline_date_range_24"
+                                    android:id="@+id/imageVie_pick_date1_par_projet"/>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!--            date2-->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:text="Au :"
+                                    android:textSize="16sp"
+                                    android:textColor="@android:color/black"
+                                    android:gravity="center"/>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="5"
+                                    android:layout_height="match_parent"
+                                    android:enabled="false"
+                                    android:hint="@string/kp_hint_balance_date2"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="5dp"
+                                    android:textColor="@android:color/black"
+                                    android:id="@+id/text_date2_par_projet"/>
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_baseline_date_range_24"
+                                    android:id="@+id/imageVie_pick_date2_par_projet"/>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_other_rapport"
+                android:layout_below="@+id/linear_top_rapport_projet_par"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:layout_alignParentBottom="false"
+                android:background="@color/colorAccentIconMyWhite"
+                android:orientation="vertical">
+
+                <!--        android:layout_weight="1"-->
+                <!--        android:gravity="center"-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:id="@+id/linear_two"
+                    android:layout_below="@+id/linear_one_specific_project">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/linear_livre_caisse_par_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Livre de caisse"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_margin="5dp"
+                                android:background="@android:color/darker_gray"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="SI. :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/solde_initial_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Débit :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/entree_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Crédit :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/sortie_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Solde :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/solde_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/linear_client_par_projet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Clients"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_margin="5dp"
+                                android:background="@android:color/darker_gray"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="SI. :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/solde_initial_client_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Débit :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/entree_client_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Crédit :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/sortie_client_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Solde :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/solde_client_par_projet"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!--        android:layout_weight="1"-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:id="@+id/linear_EB_par_project">
+
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Etat de Bésoin"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:textColor="@color/textColorPrimary"
+                                android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_margin="5dp"
+                                android:background="@android:color/darker_gray"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="EB Non Validés :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/textView_somme_EB_envoye"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="EB Validés :"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="@color/textColorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/textView_somme_EB_valide"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="2"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="0"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="@color/textColorPrimary" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="EB Servis :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/textView_somme_EB_servis"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="EB Reste à Servir :"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                                <TextView
+                                    android:id="@+id/textView_somme_EB_reste_a_servis"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="0"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:textColor="@color/textColorPrimary"
+                                    android:textAppearance="?attr/textAppearanceBody2"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/article_rapport"
+                        style="@style/Widget.Kp.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="articles"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_rapport_project"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+</RelativeLayout>

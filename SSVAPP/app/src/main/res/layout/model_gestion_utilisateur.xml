@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_gestion_utilisateur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_designation_gestion_utilisateur"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="Designation"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/text_fonction_gestion_utilisateur"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Fonction"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/text_service_gestion_utilisateur"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Service"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+            <TextView
+                android:id="@+id/text_actif_gestion_utilisateur"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Actif"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:textAppearance="?textAppearanceBody2"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

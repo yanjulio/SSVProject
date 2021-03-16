@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardBackgroundColor="@color/linesBackgroundColor"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="true">
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardBackgroundColor="@color/linesBackgroundColor"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="true">
+
+    <LinearLayout
+        android:id="@+id/linear_besoin_valider_operation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--            CODE-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/besoin_title_validation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Titre"
+                    android:textAppearance="?attr/textAppearanceBody2" />
+
+                <TextView
+                    android:id="@+id/besoin_descriptions_validation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Descriptions texts"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
+                    android:id="@+id/besoin_demandeur_validation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Demandeur"
+                    android:textAppearance="?textAppearanceBody2"/>
+
+                <TextView
+                    android:id="@+id/besoin_date_emission_validation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Date emission"
+                    android:textAppearance="?textAppearanceBody2"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/besoin_view_line_validation"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/purple_700"/>
+
+        <LinearLayout
+            android:id="@+id/besoin_linear_voir_details_validation"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/besoin_voir_details_validation"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="match_parent"
+                android:textColor="@color/textColorPrimary"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:text="Voir détail"/>
+
+            <ImageView
+                android:id="@+id/imageView_valider_besoin_validation"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_done_black_24"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

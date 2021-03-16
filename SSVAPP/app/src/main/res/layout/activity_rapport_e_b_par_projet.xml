@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.All_specificProject.RapportPartProjetEtatBesoin.RapportEBParProjet">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rapport_eb_title"
+        android:layout_below="@+id/linear_bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:text="Désignation"
+                android:paddingLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/textColorPrimary"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="Total"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:textColor="@color/textColorPrimary"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="Somme D."
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="Solde"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ListView
+        android:id="@+id/listView_etat_besoin_rapport_par_projet"
+        android:layout_below="@+id/rapport_eb_title"
+        android:layout_above="@+id/linear_total_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_bar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/kp_tool_bar"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@id/linear_total_bottom"
+        android:orientation="horizontal"
+        android:background="?attr/colorPrimaryDark"
+        android:id="@+id/linear_total_bottom">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:text="Total"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAppearance="?textAppearanceBody1"
+            android:gravity="center"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:id="@+id/textView_total_rapport_par_projet_EB"
+            android:textColor="@color/white"
+            android:textAppearance="?textAppearanceBody2"
+            android:gravity="center"
+            android:text="$total"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:progress="80"
+        android:max="100"
+        android:visibility="invisible"
+        android:id="@+id/progress_bar_etat_besoin_rapport_par_projet"
+        android:progressDrawable="@drawable/circle_proresbar"/>
+
+</RelativeLayout>

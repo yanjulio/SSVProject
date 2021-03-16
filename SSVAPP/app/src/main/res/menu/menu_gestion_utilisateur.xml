@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_creer_utilisateur"
+        android:icon="@drawable/ic_baseline_playlist_add_24"
+        android:title="Créer utilisateur"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_modifier_utilisateur"
+        android:icon="@drawable/ic_baseline_published_with_changes_24"
+        android:title="Modifier Utilisateur"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_gerer_utilisateur"
+        android:icon="@drawable/ic_baseline_view_list_24"
+        android:title="Gérer Utilisateur"
+        android:visible="false"
+        app:showAsAction="never"/>
+
+</menu>

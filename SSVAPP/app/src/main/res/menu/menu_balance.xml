@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_search_balance"
+        android:title="Search"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:visible="false"
+        android:iconTint="@color/white"
+        app:actionViewClass="android.widget.SearchView" />
+
+    <item
+        android:id="@+id/item_new_balance"
+        android:title="Settings"
+        android:iconTint="@color/white"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/item_add_balance"
+        android:title="Ajouter"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:visible="false"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_add_24"/>
+
+    <item android:id="@+id/item_save_compte"
+        android:title="save"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:visible="false"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_save_24"/>
+
+</menu>

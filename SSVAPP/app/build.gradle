@@ -1,0 +1,114 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.soft.ssvapp"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 3
+        versionName "2.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        useLibrary 'org.apache.http.legacy'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    api 'com.google.android.material:material:1.1.0-alpha06'
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.21'
+
+    androidTestImplementation 'androidx.test:core:1.1.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha05'
+
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // lifecycle componenets, for mvvm, for viewModel and LiveData
+    def archlifecycleVersion = '2.1.0-alpha02'
+    implementation "androidx.lifecycle:lifecycle-extensions:$archlifecycleVersion"
+//    annotationProcessor "androidx.arch.lifecycle:compiler:$archlifecycleVersion"
+
+    // glide : allow to display the thumbnail images in imageViews
+    def glideVersion = '4.10.0'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    // for recycleView
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // for the circle imageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    // for the datetimepicker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3' //2.3.0
+
+    //for the room that deals with sqlite
+    def room_version = "2.2.5"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // library for the room, others
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+//    implementation "androidx.room:room-ktx:$room_version"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // retrofit2 : allow the communication with the api
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+
+    // for the post
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+
+    // pour le firebase aussi
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+
+    // libraies for firebase
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment_Menu.CompteAjout.CompterModifier">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modifier Compte"
+            android:textAppearance="?textAppearanceBody1"
+            android:textColor="@color/textColorPrimary"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_libelle_compte_modifier"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_libelle_compte_modifier"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/Kp_designation_compte"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_quitter_compte_modifier"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="quitter"
+                android:layout_toLeftOf="@+id/btn_ok_compte_modifier"
+                android:layout_toStartOf="@+id/btn_ok_compte_modifier"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ok_compte_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ok"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

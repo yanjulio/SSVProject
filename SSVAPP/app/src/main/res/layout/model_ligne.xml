@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_ligne_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textView_ligne_model_deisignation"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="Ligne"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/textColorPrimary"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/textView_ligne_model_prevision"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal"
+                android:textColor="@color/textColorPrimary"
+                android:text="Prevision"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

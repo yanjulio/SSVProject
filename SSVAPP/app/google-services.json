@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670459942658",
+    "firebase_url": "https://ssv-app-a0e4a.firebaseio.com",
+    "project_id": "ssv-app-a0e4a",
+    "storage_bucket": "ssv-app-a0e4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670459942658:android:23a4fd7ff8c6f48356541b",
+        "android_client_info": {
+          "package_name": "com.soft.ssvapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670459942658-365okj6ggu44t10vtoup6v67msma4mc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKCGyJT2e-vgct_8nMEXyhaglr3WNUJ84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670459942658-365okj6ggu44t10vtoup6v67msma4mc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

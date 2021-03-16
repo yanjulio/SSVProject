@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Menu.Fill_Projects.ProjectFagment.ErrorDeConnexionProjet">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:scaleType="fitCenter"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_baseline_warning_24"/>
+
+        <TextView
+            android:id="@+id/textView_errortype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Problème de connexion, verifier votre connexion puis réessayer"
+            android:gravity="center"
+            android:textColor="@color/textColorPrimary"
+            android:textAppearance="?textAppearanceBody2"
+            android:textStyle="italic"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reessayer_projet"
+            style="@style/Widget.Kp.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Réessayer"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
