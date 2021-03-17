@@ -51,111 +51,113 @@ public class LigneVolatitileViewModel extends ViewModel {
     public void addNewValue(final Entity_Ligne entity_ligne)
     {
 //        mIsUpdating.setValue(true);
-        new insertValues(entity_ligne).execute();
+        ligne_repositories.setLignes(entity_ligne);
     }
 
-    public void deleteVolatile(final Entity_Ligne entity_ligne)
+    public void deleteVolatile(int id)
     {
-        new deleteValues(entity_ligne) .execute();
+//        new deleteValues(entity_ligne) .execute();
+        ligne_repositories.delete(id);
     }
 
-    public void updateVolatile(int id, final Entity_Ligne entity_ligne)
+    public void updateVolatile(int id, Entity_Ligne entity_ligne)
     {
-        new updateValues(id, entity_ligne).execute();
+//        Toast.makeText(context, "position : " + id, Toast.LENGTH_LONG).show();
+        ligne_repositories.update(id, entity_ligne);
     }
 
-    private class insertValues extends AsyncTask<Void, Void, Void>
-    {
-        private Entity_Ligne entity_ligne;
-
-        insertValues(Entity_Ligne entity_ligne)
-        {
-            this.entity_ligne = entity_ligne;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            ligne_repositories.setLignes(this.entity_ligne);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            return null;
-        }
-    }
-
-    private class deleteValues extends AsyncTask<Void, Void, Void>
-    {
-        private Entity_Ligne entity_ligne;
-
-        deleteValues(Entity_Ligne entity_ligne)
-        {
-            this.entity_ligne = entity_ligne;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            ligne_repositories.delete(this.entity_ligne);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try
-            {
-                Thread.sleep(2000);
-            }catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
-
-    private class updateValues extends AsyncTask<Void, Void, Void>
-    {
-        private Entity_Ligne entity_ligne;
-        private int id;
-
-        updateValues(int id, Entity_Ligne entity_ligne)
-        {
-            this.entity_ligne = entity_ligne;
-            this.id = id;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            ligne_repositories.update(this.id, this.entity_ligne);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try
-            {
-                Thread.sleep(2000);
-            }catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
+//    private class insertValues extends AsyncTask<Void, Void, Void>
+//    {
+//        private Entity_Ligne entity_ligne;
+//
+//        insertValues(Entity_Ligne entity_ligne)
+//        {
+//            this.entity_ligne = entity_ligne;
+//        }
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            ligne_repositories.setLignes(this.entity_ligne);
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            return null;
+//        }
+//    }
+//
+//    private class deleteValues extends AsyncTask<Void, Void, Void>
+//    {
+//        private Entity_Ligne entity_ligne;
+//
+//        deleteValues(Entity_Ligne entity_ligne)
+//        {
+//            this.entity_ligne = entity_ligne;
+//        }
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            ligne_repositories.delete(this.entity_ligne);
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            try
+//            {
+//                Thread.sleep(2000);
+//            }catch (InterruptedException e)
+//            {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//    }
+//
+//    private class updateValues extends AsyncTask<Void, Void, Void>
+//    {
+//        private Entity_Ligne entity_ligne;
+//        private int id;
+//
+//        updateValues(int id, Entity_Ligne entity_ligne)
+//        {
+//            this.entity_ligne = entity_ligne;
+//            this.id = id;
+//        }
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            ligne_repositories.update(this.id, this.entity_ligne);
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            try
+//            {
+//                Thread.sleep(2000);
+//            }catch (InterruptedException e)
+//            {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//    }
 
 }

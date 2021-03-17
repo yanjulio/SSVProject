@@ -206,17 +206,17 @@ public class Projects extends AppCompatActivity {
                             switch (response.code())
                             {
                                 case 404:
-                                    Toast.makeText(Projects.this, "server not found",  Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Projects.this, "Serveur introuvable",  Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(Projects.this, ErrorDeConnexionProjet.class)
                                             .putExtra(ErrorDeConnexionProjet.ERRORTYPE, "server not found."));
                                     break;
                                 case 500:
-                                    Toast.makeText(Projects.this, "server broken", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Projects.this, "Erreur serveur", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(Projects.this, ErrorDeConnexionProjet.class)
                                             .putExtra(ErrorDeConnexionProjet.ERRORTYPE, "server broken."));
                                     break;
                                 default:
-                                    Toast.makeText(Projects.this, "unknown error occured", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Projects.this, "Erreur inconnue", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(Projects.this, ErrorDeConnexionProjet.class)
                                             .putExtra(ErrorDeConnexionProjet.ERRORTYPE, "Erreur inconnue."));
                                     break;

@@ -50,6 +50,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
     LinearLayout linearLayout_rapport;
     LinearLayout linearLayout_projet;
     LinearLayout linearLayout_operation_generales;
+    LinearLayout linearLayout_poste_controle;
     SharedPreferences prefs;
     String niveauUtilisateur = null;
     String username = null;
@@ -78,6 +79,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
         linearLayout_projet = findViewById(R.id.linear_projet);
         linearLayout_rapport = findViewById(R.id.linear_rapport);
         linearLayout_operation_generales = findViewById(R.id.linear_operation);
+        linearLayout_poste_controle = findViewById(R.id.linear_poste_controle);
         progressBar = findViewById(R.id.progress_bar_menu_all);
 
 //        Toast.makeText(Menus_All.this, "Niveau utilisteur :" + niveauUtilisateur, Toast.LENGTH_LONG).show();
@@ -137,6 +139,28 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                 PopupMenu popupMenu_operation = new PopupMenu(Menus_All.this, v);
                 popupMenu_operation.setOnMenuItemClickListener(Menus_All.this);
                 popupMenu_operation.inflate(R.menu.menu_operation);
+                popupMenu_operation.show();
+                if (niveauUtilisateur.equals("UTILISATEUR"))
+                {
+                    MenuItem menuItem_comptabilite =
+                            popupMenu_operation.getMenu().findItem(R.id.item_comptabilite_operation);
+                    menuItem_comptabilite.setVisible(false);
+                    MenuItem menuItem_ravitaement  =
+                            popupMenu_operation.getMenu().findItem(R.id.item_ravitaement_operation);
+                    menuItem_ravitaement.setVisible(false);
+                    MenuItem menuItem_approvisionement =
+                            popupMenu_operation.getMenu().findItem(R.id.item_approvisionement_operation);
+                    menuItem_approvisionement.setVisible(false);
+                }
+            }
+        });
+
+        linearLayout_poste_controle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu_operation = new PopupMenu(Menus_All.this, v);
+                popupMenu_operation.setOnMenuItemClickListener(Menus_All.this);
+                popupMenu_operation.inflate(R.menu.menu_poste_controle);
                 popupMenu_operation.show();
                 if (niveauUtilisateur.equals("UTILISATEUR"))
                 {

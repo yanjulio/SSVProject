@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="25dp">
@@ -141,6 +141,54 @@
                         android:text="Dashboard et rapport"
                         android:gravity="center"
                         android:textColor="@color/textColorPrimary"
+                        android:textAppearance="?attr/textAppearanceBody2"/>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="25dp">
+
+                <LinearLayout
+                    android:id="@+id/linear_poste_controle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/shape_violet"
+                        android:src="@drawable/ic_baseline_exposure_24"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Poste"
+                        android:gravity="center"
+                        android:textColor="@color/textColorPrimary"
+                        android:textAppearance="?attr/textAppearanceHeadline6"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="5dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Les opérations aux postes des controles"
+                        android:gravity="center"
+                        android:textColor="@android:color/black"
                         android:textAppearance="?attr/textAppearanceBody2"/>
                 </LinearLayout>
 

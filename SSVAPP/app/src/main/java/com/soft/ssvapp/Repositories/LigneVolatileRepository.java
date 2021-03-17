@@ -14,6 +14,7 @@ import java.util.List;
 public class LigneVolatileRepository {
 
     private static LigneVolatileRepository instance;
+
     private ArrayList<Entity_Ligne> dataset = new ArrayList<>();
     private ArrayList<Entity_Ligne_Serializable> datasetSerializable = new ArrayList<Entity_Ligne_Serializable>();
     private MutableLiveData<List<Entity_Ligne>> data = new MutableLiveData<>();
@@ -59,11 +60,12 @@ public class LigneVolatileRepository {
         datasetSerializable.clear();
     }
 
-    public void delete(Entity_Ligne entity_ligne)
+    public void delete(int id)
     {
-        dataset.remove(entity_ligne);
+        dataset.remove(id);
+        datasetSerializable.remove(id);
+        data.setValue(dataset);
     }
-
     public void update(int id, Entity_Ligne entity_ligne)
     {
         dataset.set(id, entity_ligne);

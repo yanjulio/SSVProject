@@ -122,7 +122,7 @@ public class Ligne_Adapter extends BaseAdapter {
                         if (from_activity.equals("Nouveau"))
                         {
                             Nouveau_Projet nouveau_projet = (Nouveau_Projet)context;
-                            nouveau_projet.deleteLigne(entity_ligne);
+                            nouveau_projet.deleteLigne(position);
                         }
                         else
                         {

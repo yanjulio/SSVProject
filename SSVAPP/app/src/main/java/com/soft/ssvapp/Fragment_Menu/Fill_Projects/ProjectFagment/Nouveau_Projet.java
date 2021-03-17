@@ -199,20 +199,23 @@ public class Nouveau_Projet extends AppCompatActivity implements DatePickerDialo
         return list_local;
     }
 
-    public void deleteLigne(Entity_Ligne entity_ligne)
+    public void deleteLigne(int id)
     {
-        viewModelVolatile.deleteVolatile(entity_ligne);
+//        viewModelVolatile.deleteVolatile(entity_ligne);
+        viewModelVolatile.deleteVolatile(id);
     }
 
     public void openLigneDialog(int idVolatile, String codeProjet, String codeLigne,
                                 String designationLigne, int idLigne, double prevision, String fromActivity)
     {
-        Update_Ligne update_ligne = new Update_Ligne(idVolatile, codeProjet, codeLigne, designationLigne, idLigne, prevision, fromActivity);
+        Update_Ligne update_ligne = new Update_Ligne(idVolatile, codeProjet, codeLigne, designationLigne,
+                idLigne, prevision, fromActivity);
         update_ligne.show(getSupportFragmentManager(), "01");
     }
 
     public void insertLigne(Entity_Ligne entity_ligne)
     {
+//        Toast.makeText(Nouveau_Projet.this, "je suis nouveau dans Projet", Toast.LENGTH_LONG).show();
         viewModelVolatile.addNewValue(entity_ligne);
     }
 
