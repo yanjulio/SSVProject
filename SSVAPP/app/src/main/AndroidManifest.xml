@@ -13,19 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SSVAPP"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Fragment_Menu.All_Controleur.ListOperationcontrole"></activity>
+        <activity android:name=".Fragment_Menu.All_Controleur.ReleverOperationControle" />
+        <activity android:name=".Fragment_Menu.All_Controleur.OperationControle" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- pour la connexion aussi de version superieur -->
-
-        <activity android:name=".Fragment_Menu.CompteAjout.CompteActivity"></activity>
-        <activity android:name=".Utilisateurs.CreerUtilisateurAtivity"></activity>
-        <activity android:name=".Utilisateurs.GestionUtilisateur"></activity>
-        <activity android:name=".Utilisateurs.ValiderUtilisateur"></activity>
-        <activity
-            android:name=".Fragment_Menu.All_specificProject.RapportPartProjetEtatBesoin.RapportDetailEB.RapportDetailEBParProjet"/>
-        <activity
-            android:name=".Fragment_Menu.All_specificProject.RapportReferenceEtatBesoinCons.RapportReferenceEtatBesoinConsActivity">
-        </activity>
+        <activity android:name=".Fragment_Menu.CompteAjout.CompteActivity" />
+        <activity android:name=".Utilisateurs.CreerUtilisateurAtivity" />
+        <activity android:name=".Utilisateurs.GestionUtilisateur" />
+        <activity android:name=".Utilisateurs.ValiderUtilisateur" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportPartProjetEtatBesoin.RapportDetailEB.RapportDetailEBParProjet" />
+        <activity android:name=".Fragment_Menu.All_specificProject.RapportReferenceEtatBesoinCons.RapportReferenceEtatBesoinConsActivity" />
         <activity android:name=".Fragment_Menu.All_specificProject.RapportArticleParLigne.RapportArticleParLigneActivity" />
         <activity android:name=".Fragment_Menu.All_specificProject.RapportLignePartArticle.RapportLigneParArticle" />
         <activity android:name=".Fragment_Menu.All_specificProject.RapportParProjetArticles.RapportArticle" />
@@ -73,7 +73,6 @@
         <activity android:name=".Fragment_Menu.Navigation.Menus_All" />
         <activity android:name=".Fragment_Menu.Navigation.Projects" />
         <activity android:name=".Fragment_Menu.Navigation.DashBoard" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -90,7 +89,6 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVER" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

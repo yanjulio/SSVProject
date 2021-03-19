@@ -1,6 +1,6 @@
 <resources>
-<!--    SSV APP-->
-<!--    KVG-->
+    <!--    SSV APP-->
+    <!--    KVG-->
     <string name="app_name">SSV APP</string>
     <string name="kp_login_title">Login</string>
     <string name="kp_app_name">SSV APP</string>

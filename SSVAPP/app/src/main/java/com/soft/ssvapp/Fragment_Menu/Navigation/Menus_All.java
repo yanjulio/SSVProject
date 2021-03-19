@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.soft.ssvapp.DataRetrofit.Operation.OperationRepository;
+import com.soft.ssvapp.Fragment_Menu.All_Controleur.ListOperationcontrole;
 import com.soft.ssvapp.Fragment_Menu.FillArticle.ArticleViewModel;
 import com.soft.ssvapp.Fragment_Menu.FillPayements.FormulairePayement_Ravitaement_Cpte;
 import com.soft.ssvapp.Login;
@@ -140,7 +141,9 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                 popupMenu_operation.setOnMenuItemClickListener(Menus_All.this);
                 popupMenu_operation.inflate(R.menu.menu_operation);
                 popupMenu_operation.show();
-                if (niveauUtilisateur.equals("UTILISATEUR"))
+//                Toast.makeText(Menus_All.this,
+//                        "Niveau de Operation generale : " + niveauUtilisateur, Toast.LENGTH_LONG).show();
+                if (niveauUtilisateur.startsWith("UT"))
                 {
                     MenuItem menuItem_comptabilite =
                             popupMenu_operation.getMenu().findItem(R.id.item_comptabilite_operation);
@@ -158,22 +161,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
         linearLayout_poste_controle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popupMenu_operation = new PopupMenu(Menus_All.this, v);
-                popupMenu_operation.setOnMenuItemClickListener(Menus_All.this);
-                popupMenu_operation.inflate(R.menu.menu_poste_controle);
-                popupMenu_operation.show();
-                if (niveauUtilisateur.equals("UTILISATEUR"))
-                {
-                    MenuItem menuItem_comptabilite =
-                            popupMenu_operation.getMenu().findItem(R.id.item_comptabilite_operation);
-                    menuItem_comptabilite.setVisible(false);
-                    MenuItem menuItem_ravitaement  =
-                            popupMenu_operation.getMenu().findItem(R.id.item_ravitaement_operation);
-                    menuItem_ravitaement.setVisible(false);
-                    MenuItem menuItem_approvisionement =
-                            popupMenu_operation.getMenu().findItem(R.id.item_approvisionement_operation);
-                    menuItem_approvisionement.setVisible(false);
-                }
+                startActivity(new Intent(Menus_All.this, ListOperationcontrole.class));
             }
         });
 
@@ -188,10 +176,14 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
 ////                startActivity(new Intent(MenuFirst.this, Plan_en_cours.class));
 //                break;
             case R.id.item_encours_projet:
-                startActivity(new Intent(Menus_All.this, Projects.class).putExtra(Projects.PROJECT_KIND, "Encours."));
+                startActivity(
+                        new Intent(Menus_All.this, Projects.class)
+                                .putExtra(Projects.PROJECT_KIND, "Encours."));
                 break;
             case R.id.item_cloturer_projet:
-                startActivity(new Intent(Menus_All.this, Projects.class).putExtra(Projects.PROJECT_KIND, "Cloture."));
+                startActivity(
+                        new Intent(Menus_All.this, Projects.class)
+                                .putExtra(Projects.PROJECT_KIND, "Cloture."));
                 break;
             case R.id.item_approvisionement_operation:
                 progressBar.setVisibility(View.VISIBLE);
@@ -211,18 +203,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                         }
                         else
                         {
-                            switch (response.code())
-                            {
-                                case 404:
-                                    Toast.makeText(Menus_All.this, "server not found.", Toast.LENGTH_LONG).show();
-                                    break;
-                                case 500:
-                                    Toast.makeText(Menus_All.this, "server broken.", Toast.LENGTH_LONG).show();
-                                    break;
-                                default:
-                                    Toast.makeText(Menus_All.this, "Unknown problem.", Toast.LENGTH_LONG).show();
-                                    break;
-                            }
+                            Erreur(response.code());
                         }
                     }
 
@@ -253,18 +234,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                         }
                         else
                         {
-                            switch (response.code())
-                            {
-                                case 404:
-                                    Toast.makeText(Menus_All.this, "server not found.", Toast.LENGTH_LONG).show();
-                                    break;
-                                case 500:
-                                    Toast.makeText(Menus_All.this, "server broken.", Toast.LENGTH_LONG).show();
-                                    break;
-                                default:
-                                    Toast.makeText(Menus_All.this, "Unknown problem.", Toast.LENGTH_LONG).show();
-                                    break;
-                            }
+                            Erreur(response.code());
                         }
                     }
 
@@ -295,18 +265,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                         }
                         else
                         {
-                            switch (response.code())
-                            {
-                                case 404:
-                                    Toast.makeText(Menus_All.this, "server not found.", Toast.LENGTH_LONG).show();
-                                    break;
-                                case 500:
-                                    Toast.makeText(Menus_All.this, "server broken.", Toast.LENGTH_LONG).show();
-                                    break;
-                                default:
-                                    Toast.makeText(Menus_All.this, "Unknown problem.", Toast.LENGTH_LONG).show();
-                                    break;
-                            }
+                            Erreur(response.code());
                         }
                     }
 
@@ -319,6 +278,21 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
                 break;
         }
         return false;
+    }
+
+    private void Erreur(int code){
+        switch (code)
+        {
+            case 404:
+                Toast.makeText(Menus_All.this, "server not found.", Toast.LENGTH_LONG).show();
+                break;
+            case 500:
+                Toast.makeText(Menus_All.this, "server broken.", Toast.LENGTH_LONG).show();
+                break;
+            default:
+                Toast.makeText(Menus_All.this, "Unknown problem.", Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 
 }
