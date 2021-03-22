@@ -94,11 +94,11 @@ public class DetailBalance extends AppCompatActivity implements DatePickerDialog
         textView_titre_details_balance.setText("Relevé de "+ desingation);
         num_compte = getIntent().getIntExtra(NUM_COMPTE, 0);
 
-        calendar = getInstance();
-
-        mYear = calendar.get(YEAR);
-        mMoth = calendar.get(MONTH);
-        mDay_of_Moth = calendar.get(DAY_OF_MONTH);
+//        calendar = getInstance();
+//
+//        mYear = calendar.get(YEAR);
+//        mMoth = calendar.get(MONTH);
+//        mDay_of_Moth = calendar.get(DAY_OF_MONTH);
 
         textView_start = findViewById(R.id.text_date1_balance);
         String start_time = minus_30(c, df); // start time

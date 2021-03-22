@@ -4,7 +4,10 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.soft.ssvapp.Data.EntityOperationWithEntityMvtCompte;
 import com.soft.ssvapp.Data.Entity_MvtCompte;
 import com.soft.ssvapp.Data.Entity_Operation;
 import com.soft.ssvapp.DataRetrofit.MvtCompte.MvtCompteResponse;
@@ -38,10 +41,10 @@ public class PayementViewModel extends AndroidViewModel {
         payementRepository.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit, mvtCompteResponse_credit, idEtatBesoin);
     }
 
-    public MutableLiveData<List<Entity_MvtCompte>> getMvtCompteEnregistrer()
-    {
-        return payementRepository.getMvtEnregistrer();
-    }
+//    public MutableLiveData<List<Entity_MvtCompte>> getMvtCompteEnregistrer()
+//    {
+//        return payementRepository.getMvtEnregistrer();
+//    }
 
 
     // en locale
@@ -58,5 +61,13 @@ public class PayementViewModel extends AndroidViewModel {
     public int getDernierOperation() // je l'aurai utiliser dans payementAdapter.
     {
         return payementRepository.getDernierOperation();
+    }
+
+    public LiveData<List<EntityOperationWithEntityMvtCompte>> getRecenteOperation(String timeStamp){
+        return payementRepository.getRecentOperation(timeStamp);
+    }
+
+    public LiveData<List<Entity_MvtCompte>> getRecentMvt(){
+        return payementRepository.getRecentMvt();
     }
 }

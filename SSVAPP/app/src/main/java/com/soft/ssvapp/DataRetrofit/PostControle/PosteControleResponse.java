@@ -11,13 +11,13 @@ public class PosteControleResponse {
 //    @SerializedName("")
     private double montant;
 //    @SerializedName("")
-    private int matricule_operation;
+    private String matricule_operation;
 //    @SerializedName("")
     private int compte;
 //    @SerializedName("")
     private String date;
 
-    public PosteControleResponse(String designation, double montant, int matricule_operation, int compte, String date) {
+    public PosteControleResponse(String designation, double montant, String matricule_operation, int compte, String date) {
         this.designation = designation;
         this.montant = montant;
         this.matricule_operation = matricule_operation;
@@ -35,7 +35,7 @@ public class PosteControleResponse {
         return montant;
     }
 
-    public int getMatricule_operation() {
+    public String getMatricule_operation() {
         return matricule_operation;
     }
 

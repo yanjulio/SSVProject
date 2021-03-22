@@ -34,4 +34,17 @@ public interface tCompteDao {
 
     @Query("select * from tCompte where NumCompte = :numCompte")
     LiveData<List<Entity_Compte>> getPayements(int numCompte);
+
+    // LES REQUETTES POUR LES POSTES
+    // si ADMIN
+    @Query("select * from tCompte where GroupeCompte = 572")
+    LiveData<List<Entity_Compte>> getPosteAdminDebitCompte();
+
+    // si UTILISATEUR POSTE
+    @Query("select * from tCompte where NumCompte = :numCompte")
+    LiveData<List<Entity_Compte>> getPosteUserDebitCompte(int numCompte);
+
+    // pour le credit
+    @Query("select * from tCompte where NumCompte = 701001")
+    LiveData<List<Entity_Compte>> getPosteCreditCompte();
 }

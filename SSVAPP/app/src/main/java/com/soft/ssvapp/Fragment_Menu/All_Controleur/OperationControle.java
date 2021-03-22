@@ -9,17 +9,22 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.soft.ssvapp.Data.Entity_Compte;
 import com.soft.ssvapp.DataRetrofit.MvtCompte.MvtCompteResponse;
 import com.soft.ssvapp.DataRetrofit.Operation.OperationRetrofit;
@@ -27,12 +32,15 @@ import com.soft.ssvapp.Fragment_Menu.FillCompte.CompteViewModel;
 import com.soft.ssvapp.Fragment_Menu.FillPayements.FormulairePayement_Ravitaement_Cpte;
 import com.soft.ssvapp.Fragment_Menu.FillPayements.PayementViewModel;
 import com.soft.ssvapp.Fragment_Menu.Fill_EtatBesoin.Besoin_View_model;
+import com.soft.ssvapp.Fragment_Menu.Navigation.Menus_All;
 import com.soft.ssvapp.Login;
 import com.soft.ssvapp.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class OperationControle extends AppCompatActivity {
@@ -54,10 +62,8 @@ public class OperationControle extends AppCompatActivity {
     // spinner for the debit
     Spinner spinner_compte_debit;
     int spinner_numero_compte_debit;
-    private ArrayList<Entity_Compte> spinner_list = new ArrayList<Entity_Compte>();
-    private ArrayList<Entity_Compte> spinner_list_credit_ravitaement = new ArrayList<Entity_Compte>();
-    private ArrayList<Entity_Compte> spinner_list_debit_approvisionement = new ArrayList<Entity_Compte>();
-    private ArrayList<Entity_Compte> spinner_list_credit_payement = new ArrayList<Entity_Compte>();
+    private ArrayList<Entity_Compte> spinner_list_debit = new ArrayList<Entity_Compte>();
+    private ArrayList<Entity_Compte> spinner_list_credit = new ArrayList<Entity_Compte>();
 
     // spinner for the credit
     Spinner spinner_compte_credit;
@@ -75,155 +81,149 @@ public class OperationControle extends AppCompatActivity {
     // SharePreference reading data from login
     SharedPreferences prefs;
     String username_prefs;
+    String niveauUtilisateur="";
+    int numCompteUtilisateur;
+
 
     LinearLayout linear_credit, linear_debit;
     TextInputEditText edit_montant, edit_libelle;
+    TextInputLayout input_montant;
     TextView textView_date_operation;
+    ProgressBar progressBar;
+
+    String current_date="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operation_controle);
 
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // 'T' HH:mm:ss z"
+        current_date = df.format(to_number_format(c));
+
         besoin_view_model = ViewModelProviders.of(OperationControle.this).get(Besoin_View_model.class);
         payementViewModel = ViewModelProviders.of(OperationControle.this).get(PayementViewModel.class);
 
         prefs = getSharedPreferences("lOGIN_USER", MODE_PRIVATE);
         username_prefs = prefs.getString(Login.USER_NAME, "");
+        niveauUtilisateur = prefs.getString(Login.NIVEAUUTILISATEUR, "");
+        numCompteUtilisateur = prefs.getInt(Login.COMPTE, 0);
+
+//        Toast.makeText(this, "Compte utilisteur :" + numCompteUtilisateur, Toast.LENGTH_LONG).show();
 
         kind_payement = getIntent().getStringExtra(KIND_PAYEMENT);
+//        Toast.makeText(OperationControle.this, "kind : " + kind_payement, Toast.LENGTH_LONG).show();
         code_besoin = getIntent().getStringExtra(CODE_BESOIN);
         code_projet = getIntent().getStringExtra(CODE_PROJET);
         dernier_operation = getIntent().getIntExtra(DERNIER_OPERATION, 0);
         montant = getIntent().getStringExtra(MONTANT);
+        progressBar = findViewById(R.id.progress_bar_operation_controle);
 //        idEtatBesoin = getIntent().getIntExtra(ID_ETATBESOIN, 0);
         compte_projet_credit = getIntent().getIntExtra(COMPTE_LIER_PROJET_CREDIT, 0);
         compte_designation_projet = getIntent().getStringExtra(COMPTE_LIER_DESIGNATION_PROJET);
 
-        Toast.makeText(OperationControle.this, "kind : " + kind_payement, Toast.LENGTH_LONG);
-
         setUpToolbar();
 
-        Calendar c = Calendar.getInstance();
-
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-        date_emission = df.format(c.getTime());
+//        Calendar c = Calendar.getInstance();
+//
+//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+//        date_emission = df.format(c.getTime());
 
         linear_debit = findViewById(R.id.linear_debit_operation_controle);
         linear_credit = findViewById(R.id.linear_credit_operation_controle);
         spinner_compte_debit = findViewById(R.id.spinner_compte_debit_operation_controle); // for the debit
         spinner_compte_credit = findViewById(R.id.spinner_compte_credit_operation_controle);// for the credit
         edit_montant = findViewById(R.id.edit_montant_operation_controle);
-//        if (kind_payement.equals("Payements."))
-//        {
-//            Toast.makeText(this , "Reste : " + montant, Toast.LENGTH_LONG).show();
-//            edit_montant.setText("" + montant);
-//        }
+        input_montant = findViewById(R.id.montant_operation_controle_input);
         edit_libelle = findViewById(R.id.edit_libelle_operation_controle);
         edit_libelle.setText("" + kind_payement);
         textView_date_operation = findViewById(R.id.textView_date_operation_controle);
-        textView_date_operation.setText("" + date_emission);
+        textView_date_operation.setText("" + current_date);
 
         compteViewModel = ViewModelProviders.of(OperationControle.this).get(CompteViewModel.class);
-//        if (kind_payement.equals("Ravitaillement."))
-//        {
-//            spinner_compte_debit.setEnabled(true);
-//            spinner_compte_credit.setEnabled(false);
-//            spinner_numero_compte_credit = 0;
-//            compteViewModel.getGetRavitaementCompte().observe(OperationControle.this,
-//                    new Observer<List<Entity_Compte>>() {
-//                        @Override
-//                        public void onChanged(List<Entity_Compte> entity_comptes) {
-//                            spinner_list.clear();
-//                            spinner_list.addAll(entity_comptes);
-//
-//                            // for the spinner, just call it
-//                            spinnerValue_debit(spinner_list);
-////                    spinnerValue_credit(spinner_list);
-//                        }
-//                    });
-//            compteViewModel.getGetAllcompte().observe(OperationControle.this,
-//                    new Observer<List<Entity_Compte>>() {
-//                        @Override
-//                        public void onChanged(List<Entity_Compte> entity_comptes) {
-//                            spinner_list_credit_ravitaement.clear();
-//                            spinner_list_credit_ravitaement.addAll(entity_comptes);
-//                            spinnerValue_credit(spinner_list_credit_ravitaement);
-//                        }
-//                    });
-//        }
-//        if (kind_payement.equals("Approvisionement."))
-//        {
-            spinner_compte_debit.setEnabled(false);
-            spinner_compte_credit.setEnabled(true);
+        if (niveauUtilisateur.equals("ADMIN"))
+        {
+            spinner_compte_debit.setEnabled(true);
+            spinner_compte_credit.setEnabled(false);
 //            edit_libelle_value = "Approvisionement";
-            compteViewModel.getGetApprovisionementCompte().observe(OperationControle.this,
+            compteViewModel.getPosteAdminDebitCompte().observe(OperationControle.this,
                     new Observer<List<Entity_Compte>>() {
                         @Override
                         public void onChanged(List<Entity_Compte> entity_comptes) {
-                            spinner_list.clear();
-                            spinner_list.addAll(entity_comptes);
+                            spinner_list_debit.clear();
+                            spinner_list_debit.addAll(entity_comptes);
 
                             // for the spinner, just call it
-//                    spinnerValue_debit(spinner_list);
-                            spinnerValue_credit(spinner_list);
+                            spinnerValue_debit(spinner_list_debit);
+//                            spinnerValue_credit(spinner_list);
                         }
                     });
 
-            compteViewModel.getGetAllcompte().observe(OperationControle.this,
+            compteViewModel.getPosteCreditCompte().observe(OperationControle.this,
                     new Observer<List<Entity_Compte>>() {
                         @Override
                         public void onChanged(List<Entity_Compte> entity_comptes) {
-                            spinner_list_debit_approvisionement.clear();
-                            spinner_list_debit_approvisionement.addAll(entity_comptes);
-                            spinnerValue_debit(spinner_list_debit_approvisionement);
+                            spinner_list_credit.clear();
+                            spinner_list_credit.addAll(entity_comptes);
+                            spinnerValue_credit(spinner_list_credit);
                         }
                     });
-//        }
-//        else if (kind_payement.equals("Payements."))
-//        {
-//            spinner_compte_debit.setEnabled(false);
-//            spinner_compte_credit.setEnabled(true);
-//            spinner_numero_compte_debit=0;
-////            edit_libelle_value = "Payement";
-//
-//            compteViewModel.getGetAllcompte().observe(OperationControle.this,
-//                    new Observer<List<Entity_Compte>>() {
-//                        @Override
-//                        public void onChanged(List<Entity_Compte> entity_comptes) {
-//                            spinner_list.clear();
-//                            spinner_list.addAll(entity_comptes);
-//
-//                            // for the spinner, just call it
-//                            spinnerValue_debit(spinner_list);
-////                    spinnerValue_credit(spinner_list);
-//                        }
-//                    });
-//            compteViewModel.getGetPayements(compte_projet_credit).observe(OperationControle.this,
-//                    new Observer<List<Entity_Compte>>() {
-//                        @Override
-//                        public void onChanged(List<Entity_Compte> entity_comptes) {
-//                            spinner_list_credit_payement.clear();
-//                            spinner_list_credit_payement.addAll(entity_comptes);
-//                            spinnerValue_credit(spinner_list_credit_payement);
-//                        }
-//                    });
-//        }
-//        else
-//        {
-//            compteViewModel.getGetAllcompte().observe(OperationControle.this,
-//                    new Observer<List<Entity_Compte>>() {
-//                        @Override
-//                        public void onChanged(List<Entity_Compte> entity_comptes) {
-//                            spinner_list.clear();
-//                            spinner_list.addAll(entity_comptes);
-//
-//                            // for the spinner, just call it
-//                            spinnerValue_debit(spinner_list);
-//                            spinnerValue_credit(spinner_list);
-//                        }
-//                    });
-//        }
+        }
+        else
+        {
+            spinner_compte_debit.setEnabled(true);
+            spinner_compte_credit.setEnabled(false);
+            spinner_numero_compte_debit=0;
+//            edit_libelle_value = "Payement";
+
+            compteViewModel.getPosteUserDebitCompte(numCompteUtilisateur).observe(OperationControle.this,
+                    new Observer<List<Entity_Compte>>() {
+                        @Override
+                        public void onChanged(List<Entity_Compte> entity_comptes) {
+                            spinner_list_debit.clear();
+                            spinner_list_debit.addAll(entity_comptes);
+
+                            // for the spinner, just call it
+                            spinnerValue_debit(spinner_list_debit);
+//                    spinnerValue_credit(spinner_list);
+                        }
+                    });
+            compteViewModel.getPosteCreditCompte().observe(OperationControle.this,
+                    new Observer<List<Entity_Compte>>() {
+                        @Override
+                        public void onChanged(List<Entity_Compte> entity_comptes) {
+                            spinner_list_credit.clear();
+                            spinner_list_credit.addAll(entity_comptes);
+                            spinnerValue_credit(spinner_list_credit);
+                        }
+                    });
+        }
+
+        edit_montant.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (isPass_word_valid(edit_montant.getText())){
+                    input_montant.setError(null);
+                }
+                    return false;
+            }
+        });
+
+    }
+
+    public Date to_number_format(Calendar calendar)
+    {
+        Date d = calendar.getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd "); // 'T' HH:mm:ss z"
+        try {
+            d = df.parse(d.toString()); // calendar.getTime().toString()
+        }catch (ParseException ex)
+        {
+            Log.v("Exception", ex.getLocalizedMessage());
+        }
+        return d;
     }
 
     void spinnerValue_debit(ArrayList<Entity_Compte> list)
@@ -334,79 +334,56 @@ public class OperationControle extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.item_save_payement:
+                Toast.makeText(OperationControle.this, "time current : " + current_date, Toast.LENGTH_LONG).show();
                 OperationRetrofit operationRetrofit =
                         new OperationRetrofit("OP"+String.valueOf(dernier_operation), edit_libelle.getText().toString(),
                                 username_prefs,
-                                date_emission, date_emission, code_besoin);
-                Toast.makeText(OperationControle.this, "Bien enregistré OperationControle", Toast.LENGTH_LONG);
-//                if (kind_payement.equals("Payements."))
-//                {
-////                    MvtCompteResponse mvtCompteResponse_credit = new MvtCompteResponse(String.valueOf(compte_projet_credit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1, 0,
-////                            Double.valueOf(edit_montant.getText().toString()), code_projet);
-////                    // pour enregistrer l'operation, pour le credit.
-////                    MvtCompteResponse mvtCompteResponse_debit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_debit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1,
-////                            Double.valueOf(edit_montant.getText().toString()), 0, code_projet); // pour le debit
-////                    payementViewModel.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit,
-////                            mvtCompteResponse_credit, idEtatBesoin);
-////                    setResult(RESULT_OK);
-//                }
-//                else if (kind_payement.equals("Ravitaillement."))
-//                {
-////                    MvtCompteResponse mvtCompteResponse_credit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_credit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1, 0,
-////                            Double.valueOf(edit_montant.getText().toString()), code_projet); // pour le credit
-////                    MvtCompteResponse mvtCompteResponse_debit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_debit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1,
-////                            Double.valueOf(edit_montant.getText().toString()), 0, code_projet);
-////                    payementViewModel.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit,
-////                            mvtCompteResponse_credit, idEtatBesoin);
-//                }
-//                else if (kind_payement.equals("Approvisionement."))
-//                {
-////                    MvtCompteResponse mvtCompteResponse_credit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_credit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1, 0,
-////                            Double.valueOf(edit_montant.getText().toString()), code_projet); // pour le credit
-////                    MvtCompteResponse mvtCompteResponse_debit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_debit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1,
-////                            Double.valueOf(edit_montant.getText().toString()), 0, code_projet);
-////                    // pour enregistrer l'operation, pour le debit.
-////                    payementViewModel.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit,
-////                            mvtCompteResponse_credit, idEtatBesoin);
-//                }
-//                else if (kind_payement.equals("Comptabilité.")){
-////                    MvtCompteResponse mvtCompteResponse_credit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_credit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1, 0,
-////                            Double.valueOf(edit_montant.getText().toString()), code_projet); // pour le credit
-////                    MvtCompteResponse mvtCompteResponse_debit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_debit),
-////                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1,
-////                            Double.valueOf(edit_montant.getText().toString()), 0, code_projet); // pour le debit
-////                    payementViewModel.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit, mvtCompteResponse_credit,
-////                            idEtatBesoin);
-//                }
-//                Intent intent = new Intent();
-//                intent.putExtra(ListOperationcontrole.COMPTE, spinner_numero_compte_debit);
-//                intent.putExtra(ListOperationcontrole.MATRICULE, "OP"+dernier_operation);
-//                intent.putExtra(ListOperationcontrole.MONTANT, Double.valueOf(edit_montant.getText().toString()));
-//                intent.putExtra(ListOperationcontrole.DESIGNATION, edit_libelle.getText());
-//                intent.putExtra(ListOperationcontrole.DATE, "17/03/2021");
-                Toast.makeText(OperationControle.this, "Bien enregistré OperationControle", Toast.LENGTH_LONG);
-//                setResult(RESULT_OK, intent);
-//                finish();
+                                current_date, current_date, code_besoin);
+                if(isPass_word_valid(edit_montant.getText())){
+
+                    MvtCompteResponse mvtCompteResponse_credit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_credit),
+                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1, 0,
+                            Double.valueOf(edit_montant.getText().toString()), code_projet); // pour le credit
+                    MvtCompteResponse mvtCompteResponse_debit = new MvtCompteResponse(String.valueOf(spinner_numero_compte_debit),
+                            "OP"+dernier_operation, edit_libelle.getText().toString(), 1,
+                            Double.valueOf(edit_montant.getText().toString()), 0, code_projet);
+                    // pour enregistrer l'operation, pour le debit.
+                    payementViewModel.insertOpCompteOnline(operationRetrofit, mvtCompteResponse_debit,
+                            mvtCompteResponse_credit, idEtatBesoin);
+
+                    Intent intent = new Intent();
+                    intent.putExtra(ListOperationcontrole.COMPTE, spinner_numero_compte_debit);
+                    intent.putExtra(ListOperationcontrole.MATRICULE, "OP"+dernier_operation);
+                    intent.putExtra(ListOperationcontrole.MONTANT, Double.valueOf(edit_montant.getText().toString()));
+                    intent.putExtra(ListOperationcontrole.DESIGNATION, edit_libelle.getText().toString());
+                    intent.putExtra(ListOperationcontrole.DATE, "17/03/2021");
+                    setResult(RESULT_OK, intent);
+                    finish();
+                    input_montant.setError(null);
+                }else{
+                    input_montant.setError(""+getString(R.string.error_montant));
+                    Toast.makeText(
+                            OperationControle.this, "Veillez ajouter le montant svp!", Toast.LENGTH_LONG).show();
+                }
                 break;
             default:
-                Toast.makeText(OperationControle.this, "Bien enregistré OperationControle", Toast.LENGTH_LONG);
+                Toast.makeText(OperationControle.this, "Un problème a subvenu", Toast.LENGTH_LONG).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
+
+    }
+
+    private boolean isPass_word_valid(Editable editable)
+    {
+        return editable != null && editable.length() >= 1 && Double.valueOf(editable.toString()) >=1;
     }
 
     private void setUpToolbar()
     {
         Toolbar toolbar = findViewById(R.id.app_bar_operation_controle);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_clear_24);
-        toolbar.setTitle(kind_payement);
+        toolbar.setTitle("Opération Poste");
         if (OperationControle.this != null) {
             OperationControle.this.setSupportActionBar(toolbar);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {

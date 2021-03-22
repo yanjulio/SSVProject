@@ -80,9 +80,9 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
         setContentView(R.layout.activity_relever_operation_controle);
 
         rapportRetrofitRepository = RapportRetrofitRepository.getInstance();
-        progressBar = findViewById(R.id.progress_bar_detail_balance);
+        progressBar = findViewById(R.id.progress_bar_relever_operation_controle);
 
-        scrollView_balance_list = findViewById(R.id.scrollView_down_balance);
+        scrollView_balance_list = findViewById(R.id.scrollView_down_relever_operation_controle);
         scrollView_balance_list.setVisibility(View.GONE);
 
         Calendar c = Calendar.getInstance();
@@ -93,7 +93,7 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
         Log.e("current_time ", current_time);
 
         desingation = getIntent().getStringExtra(DESIGANTION);
-        textView_titre_details_balance = findViewById(R.id.textView_titre_details_balance);
+        textView_titre_details_balance = findViewById(R.id.textView_titre_relever_operation_controle);
         textView_titre_details_balance.setText("Relevé de "+ desingation);
         num_compte = getIntent().getIntExtra(NUM_COMPTE, 0);
 
@@ -103,10 +103,10 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
         mMoth = calendar.get(MONTH);
         mDay_of_Moth = calendar.get(DAY_OF_MONTH);
 
-        textView_start = findViewById(R.id.text_date1_balance);
+        textView_start = findViewById(R.id.text_date1_relever_operation_controle);
         String start_time = minus_30(c, df); // start time
         textView_start.setText("" + start_time);
-        imageView_start = findViewById(R.id.imageVie_pick_date1_balance);
+        imageView_start = findViewById(R.id.imageVie_pick_date1_relever_operation_controle);
         imageView_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +115,9 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
             }
         });
 
-        textView_end = findViewById(R.id.text_date2_balance);
+        textView_end = findViewById(R.id.text_date2_relever_operation_controle);
         textView_end.setText("" + current_time);
-        imageView_end = findViewById(R.id.imageVie_pick_date2_balance);
+        imageView_end = findViewById(R.id.imageVie_pick_date2_relever_operation_controle);
         imageView_end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +132,7 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
             loadData(num_compte, textView_start.getText().toString(), textView_end.getText().toString());
         }
 
-        final ImageView imageView_exit = findViewById(R.id.imageview_exit_detail_balance);
+        final ImageView imageView_exit = findViewById(R.id.imageview_exit_relever_operation_controle);
         imageView_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -308,14 +308,14 @@ public class ReleverOperationControle extends AppCompatActivity implements DateP
                                 Integer.valueOf(response.body().get(a).getNumCompte()));
                         arrayList_loadDetail.add(balance_objet);
                     }
-                    TextView textView_credit_solde_balance = findViewById(R.id.text_credit_solde_balance);
-                    TextView textView_debit_totale_balance = findViewById(R.id.text_debit_totale_balance);
-                    text_credit_totale_balance = findViewById(R.id.text_credit_totale_balance);
+                    TextView textView_credit_solde_balance = findViewById(R.id.text_credit_solde_relever_operation_controle);
+                    TextView textView_debit_totale_balance = findViewById(R.id.text_debit_totale_relever_operation_controle);
+                    text_credit_totale_balance = findViewById(R.id.text_credit_totale_relever_operation_controle);
 
-                    textView_credit_initiale = findViewById(R.id.txt_totale_credit_initale);
-                    textView_debit_initiale = findViewById(R.id.txt_totale_debit_initale);
+                    textView_credit_initiale = findViewById(R.id.txt_totale_credit_initale_relever_operation_controle);
+                    textView_debit_initiale = findViewById(R.id.txt_totale_debit_initale_relever_operation_controle);
 
-                    listView_balance_details = findViewById(R.id.list_details_balance);
+                    listView_balance_details = findViewById(R.id.list_details_relever_operation_controle);
                     Details_Balance_Adapter adapter = new Details_Balance_Adapter(ReleverOperationControle.this, date1, date2);
                     adapter.setDetailBalance(arrayList_loadDetail);
                     listView_balance_details.setAdapter(adapter);

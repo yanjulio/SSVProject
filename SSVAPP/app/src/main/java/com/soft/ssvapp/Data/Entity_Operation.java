@@ -7,15 +7,16 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tOperation", indices = {@Index(value = {"NumOperation"}, unique = true),
-        @Index(value = {"CodeEtatdeBesoin"}, unique = false)}, foreignKeys = @ForeignKey(
-                entity = Entity_Besoin.class, parentColumns = "CodeEtatdeBesoin", childColumns = "CodeEtatdeBesoin"))
+//,
+//@Index(value = {"CodeEtatdeBesoin"}, unique = false)}, foreignKeys = @ForeignKey(
+//        entity = Entity_Besoin.class, parentColumns = "CodeEtatdeBesoin", childColumns = "CodeEtatdeBesoin")
+@Entity(tableName = "tOperation", indices = {@Index(value = {"NumOperationOp"}, unique = true)})
 public class Entity_Operation {
     @ColumnInfo(name = "IdOperation")
     @PrimaryKey(autoGenerate = true)
     private int idOperation;
-    @ColumnInfo(name = "NumOperation")
-    private String numOperation ;
+    @ColumnInfo(name = "NumOperationOp")
+    private String numOperationOp ;
     @ColumnInfo(name = "Libelle")
     private String libelle;
     @ColumnInfo(name = "NomUt")
@@ -27,9 +28,9 @@ public class Entity_Operation {
     @ColumnInfo(name = "DateSysteme")
     private String dateSysteme ;
 
-    public Entity_Operation(String numOperation, String libelle, String nomUt, String dateOperation,
+    public Entity_Operation(String numOperationOp, String libelle, String nomUt, String dateOperation,
                             String dateSysteme, String codeEtatdeBesoin) {
-        this.numOperation = numOperation;
+        this.numOperationOp = numOperationOp;
         this.libelle = libelle;
         this.nomUt = nomUt;
         this.codeEtatdeBesoin = codeEtatdeBesoin;
@@ -45,8 +46,8 @@ public class Entity_Operation {
         return idOperation;
     }
 
-    public String getNumOperation() {
-        return numOperation;
+    public String getNumOperationOp() {
+        return numOperationOp;
     }
 
     public String getLibelle() {

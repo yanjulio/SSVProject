@@ -77,4 +77,5 @@
     <string name="freeman_Num_compte">Numéro du Compte</string>
     <string name="kp_code_verification">Code de vérification</string>
     <string name="kp_password_valide">Veillez entrer un mot de passe valide</string>
+    <string name="error_montant">Veillez entrer un montant superieur à 0</string>
 </resources>

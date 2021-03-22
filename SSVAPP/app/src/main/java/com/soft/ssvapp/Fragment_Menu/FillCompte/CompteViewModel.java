@@ -32,6 +32,18 @@ public class CompteViewModel extends AndroidViewModel {
         compteRepository.insertOnline();
     }
 
+    public LiveData<List<Entity_Compte>> getPosteAdminDebitCompte(){
+        return compteRepository.getGetPosteAdminDebitCompte();
+    }
+
+    public LiveData<List<Entity_Compte>> getPosteUserDebitCompte(int numCompte){
+        return compteRepository.getGetPosteUserDebitCompte(numCompte);
+    }
+
+    public LiveData<List<Entity_Compte>> getPosteCreditCompte(){
+        return compteRepository.getGetPosteCreditCompte();
+    }
+
     public LiveData<List<Entity_Compte>> getGetAllcompte()
     {
         return getAllcompte;

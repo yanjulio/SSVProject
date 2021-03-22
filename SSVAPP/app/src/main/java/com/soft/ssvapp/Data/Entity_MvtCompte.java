@@ -6,21 +6,24 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tMvtCompte", indices = {@Index(value = {"NumCompte"}, unique = false),
-        @Index(value ={"NumOperation"}, unique = true), @Index(value = {"CodeProject"}, unique = false)},
+//, @ForeignKey(
+//        entity = Entity_Compte.class,
+//        parentColumns = "NumCompte",
+//        childColumns = "NumCompte",
+//        onDelete = ForeignKey.CASCADE),
+//@ForeignKey(
+//        entity = Entity_Project.class,
+//        parentColumns = "CodeProject",
+//        childColumns = "CodeProject", onDelete = ForeignKey.CASCADE)
+//, @Index(value = {"CodeProject"}, unique = false)
+//@Index(value = {"NumCompte"}, unique = false),
+@Entity(tableName = "tMvtCompte", indices = {
+        @Index(value ={"NumOperation"}, unique = true)},
         foreignKeys = {@ForeignKey(
                 entity = Entity_Operation.class,
-                parentColumns = "NumOperation",
+                parentColumns = "NumOperationOp",
                 childColumns = "NumOperation",
-                onDelete = ForeignKey.CASCADE), @ForeignKey(
-                entity = Entity_Compte.class,
-                parentColumns = "NumCompte",
-                childColumns = "NumCompte",
-                onDelete = ForeignKey.CASCADE),
-                @ForeignKey(
-                        entity = Entity_Project.class,
-                        parentColumns = "CodeProject",
-                        childColumns = "CodeProject", onDelete = ForeignKey.CASCADE)})
+                onDelete = ForeignKey.CASCADE)})
 public class Entity_MvtCompte {
     @ColumnInfo(name = "IdMouvement")
     @PrimaryKey(autoGenerate = true)
@@ -34,9 +37,9 @@ public class Entity_MvtCompte {
     @ColumnInfo(name = "Qte")
     private double qte ;
     @ColumnInfo(name = "Entree")
-    private double entree ;
+    private double entree = 0;
     @ColumnInfo(name = "Sortie")
-    private double sortie ;
+    private double sortie = 0;
     @ColumnInfo(name = "CodeProject")
     private String codeProjet;
 

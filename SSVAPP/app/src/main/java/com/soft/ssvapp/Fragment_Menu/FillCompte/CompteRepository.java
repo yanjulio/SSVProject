@@ -28,6 +28,10 @@ public class CompteRepository {
     private LiveData<List<Entity_Compte>> getApprovisionement;
     private LiveData<List<Entity_Compte>> getProjetCompte;
     private LiveData<List<Entity_Compte>> getPayementsCompte;
+
+    private LiveData<List<Entity_Compte>> getPosteAdminDebitCompte;
+    private LiveData<List<Entity_Compte>> getPosteUserDebitCompte;
+    private LiveData<List<Entity_Compte>> getPosteCreditCompte;
     private Application application;
 
     public CompteRepository(Application application)
@@ -40,7 +44,22 @@ public class CompteRepository {
         getRavitaementCompte = tCompteDao.getRavitaementCompte();
         getApprovisionement = tCompteDao.getApprovisionementCompte();
         getProjetCompte = tCompteDao.getProjetCompte();
+
+        getPosteAdminDebitCompte = tCompteDao.getPosteAdminDebitCompte();
+        getPosteCreditCompte = tCompteDao.getPosteCreditCompte();
         compteRetrofitRepository = CompteRemote.getInstance();
+    }
+
+    public LiveData<List<Entity_Compte>> getGetPosteAdminDebitCompte(){
+        return getPosteAdminDebitCompte;
+    }
+
+    public LiveData<List<Entity_Compte>> getGetPosteUserDebitCompte(int numCompte){
+        return getPosteUserDebitCompte = tCompteDao.getPosteUserDebitCompte(numCompte);
+    }
+
+    public LiveData<List<Entity_Compte>> getGetPosteCreditCompte(){
+        return getPosteCreditCompte;
     }
 
     public LiveData<List<Entity_Compte>> getGetAllcompte()

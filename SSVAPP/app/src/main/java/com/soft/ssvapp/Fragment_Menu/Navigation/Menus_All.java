@@ -53,7 +53,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
     LinearLayout linearLayout_operation_generales;
     LinearLayout linearLayout_poste_controle;
     SharedPreferences prefs;
-    String niveauUtilisateur = null;
+    String niveauUtilisateur = "";
     String username = null;
     String password = null;
 //    String receiverUtilisateur = null;
@@ -83,7 +83,7 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
         linearLayout_poste_controle = findViewById(R.id.linear_poste_controle);
         progressBar = findViewById(R.id.progress_bar_menu_all);
 
-//        Toast.makeText(Menus_All.this, "Niveau utilisteur :" + niveauUtilisateur, Toast.LENGTH_LONG).show();
+//        Toast.makeText(Menus_All.this, "Compte utilisteur :" + compteUtilisateur, Toast.LENGTH_LONG).show();
         if(niveauUtilisateur.equals("ADMIN"))
         {
             FirebaseMessaging.getInstance().subscribeToTopic(niveauUtilisateur).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -161,7 +161,8 @@ public class Menus_All extends AppCompatActivity implements PopupMenu.OnMenuItem
         linearLayout_poste_controle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Menus_All.this, ListOperationcontrole.class));
+                startActivity(
+                        new Intent(Menus_All.this, ListOperationcontrole.class));
             }
         });
 

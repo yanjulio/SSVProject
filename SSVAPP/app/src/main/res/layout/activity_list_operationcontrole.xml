@@ -10,11 +10,90 @@
         android:id="@+id/app_bar_list_operation_controle"
         layout="@layout/kp_tool_bar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/linear_entete_list_operation_controle"
         android:layout_below="@+id/app_bar_list_operation_controle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="40dp">
+
+            <TextView
+                android:id="@+id/matricule_operation_controle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Matricule"
+                android:gravity="center_vertical"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/designation_operation_controle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Designation"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/montant_operation_controle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Montant"
+                android:textColor="@color/textColorPrimary"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_above="@+id/linear_bottom_total_list_operation_controle"
+        android:layout_below="@+id/linear_entete_list_operation_controle"
         android:id="@+id/recycler_operation_controle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_bottom_total_list_operation_controle"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/teal_200">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:text="Total"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/total_list_operation_controle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Value"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/float_add_operation_controle"
@@ -23,7 +102,8 @@
         android:src="@drawable/ic_baseline_playlist_add_24"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="30dp"/>
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="60dp"/>
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -34,7 +114,7 @@
         android:progress="80"
         android:max="100"
         android:visibility="invisible"
-        android:id="@+id/progress_bar_operation_controle"
+        android:id="@+id/progress_bar_list_operation_controle"
         android:progressDrawable="@drawable/circle_proresbar"/>
 
 </RelativeLayout>

@@ -17,17 +17,19 @@
 
         <TextView
             android:id="@+id/matricule_operation_controle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="Matricule"
             android:gravity="center_vertical"
             android:textSize="10sp"
             android:paddingLeft="5dp"/>
 
         <TextView
             android:id="@+id/designation_operation_controle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:text="Designation"
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:textSize="10sp"
@@ -35,10 +37,11 @@
 
         <TextView
             android:id="@+id/montant_operation_controle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical"
+            android:text="$200"
+            android:gravity="center"
             android:textSize="10sp"
             android:paddingLeft="5dp"/>
 

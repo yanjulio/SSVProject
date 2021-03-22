@@ -3,10 +3,13 @@ package com.soft.ssvapp.Fragment_Menu.FillPayements;
 import android.app.Application;
 import android.app.TaskInfo;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.soft.ssvapp.Data.EntityOperationWithEntityMvtCompte;
 import com.soft.ssvapp.Data.Entity_Besoin;
 import com.soft.ssvapp.Data.Entity_MvtCompte;
 import com.soft.ssvapp.Data.Entity_Operation;
@@ -37,8 +40,11 @@ public class PayementRepository {
     Besoin_Repository besoin_repository;
     private tOperationDao operationDao;
     private tMvtCompteDao mvtCompteDao;
-    MutableLiveData<List<Entity_MvtCompte>> entity_mvtEnregistrer = new MutableLiveData<>();
-    List<Entity_MvtCompte> list_enregistrer = new ArrayList<>();
+//    MutableLiveData<List<Entity_MvtCompte>> entity_mvtEnregistrer = new MutableLiveData<>();
+//    List<Entity_MvtCompte> list_enregistrer = new ArrayList<>();
+    MutableLiveData<List<Entity_Operation>> recentOperation;
+
+    MutableLiveData<Boolean> progress = new MutableLiveData<>();
     Application application;
 
     public PayementRepository(Application application)
@@ -50,7 +56,18 @@ public class PayementRepository {
         operationRepository = OperationRepository.getInstance();
         mvtCompteRepositoryRetrofit = MvtCompteRepositoryRetrofit.getInstance();
         etatDeBesoinRepositoryRetrofit = EtatDeBesoinRepositoryRetrofit.getInstance();
+        recentOperation = new MutableLiveData<>();
         besoin_repository = new Besoin_Repository(application);
+    }
+
+    public LiveData<List<EntityOperationWithEntityMvtCompte>> getRecentOperation(String timeStamp){
+//        Toast.makeText(application,
+//                "size Operation : " + timeStamp, Toast.LENGTH_LONG).show();
+        return operationDao.getOperation(timeStamp);
+    }
+
+    public LiveData<List<Entity_MvtCompte>> getRecentMvt(){
+        return mvtCompteDao.getRecentmvt();
     }
 
     public int getDernierOperation()
@@ -72,7 +89,7 @@ public class PayementRepository {
 
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
-                Toast.makeText(application, "Connexion Problem.",Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Problème de Connexion", Toast.LENGTH_LONG).show();
             }
         });
         return dernier_operation[0];
@@ -104,21 +121,23 @@ public class PayementRepository {
         });
     }
 
-    public MutableLiveData<List<Entity_MvtCompte>> getMvtEnregistrer()
-    {
-        return entity_mvtEnregistrer;
-    }
+//    public MutableLiveData<List<Entity_MvtCompte>> getMvtEnregistrer()
+//    {
+//        return entity_mvtEnregistrer;
+//    }
 
     public void insertOpCompteOnline(OperationRetrofit operationRetrofit, MvtCompteResponse mvtCompteResponse_debit,
                                      MvtCompteResponse mvtCompteResponse_credit, int idEtatBesoin)
     {
         Call<Void> call_op = operationRepository.operationConnexion().createOperation(operationRetrofit);
+        progress.postValue(true);
         call_op.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful())
                 {
-                    Toast.makeText(application, "Operation bien enregistrée.", Toast.LENGTH_LONG).show();
+                    progress.postValue(false);
+                    Toast.makeText(application, "Operation bien enregistrée", Toast.LENGTH_LONG).show();
                     insertMvtOnline(mvtCompteResponse_debit);
                     insertMvtOnline(mvtCompteResponse_credit);
 
@@ -160,7 +179,8 @@ public class PayementRepository {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(application, "Connexion Problem.", Toast.LENGTH_LONG).show();
+                progress.postValue(false);
+                Toast.makeText(application, "Problème de Connexion", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -207,7 +227,7 @@ public class PayementRepository {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(application, "Connexion Problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Problème de Connexion", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -230,22 +250,32 @@ public class PayementRepository {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(application, "Connexion Problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Problème de Connexion", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void insertMvt(Entity_MvtCompte entity_mvtCompte)
     {
-        list_enregistrer.clear();
-        list_enregistrer.add(entity_mvtCompte);
-        entity_mvtEnregistrer.postValue(list_enregistrer);
+//        list_enregistrer.clear();
+//        list_enregistrer.add(entity_mvtCompte);
+//        entity_mvtEnregistrer.postValue(list_enregistrer);
         new inserMvttAsyncTask(mvtCompteDao).execute(entity_mvtCompte);
     }
 
     public void insertOp(Entity_Operation entity_operation)
     {
         new insertOpAsncTask(operationDao).execute(entity_operation);
+//        Entity_MvtCompte entity_compte_credit = new Entity_MvtCompte(mvtCompte_credit.getNumCompte(),
+//                mvtCompte_credit.getNumOperation(),
+//                mvtCompte_credit.getDetails(), mvtCompte_credit.getQte(), mvtCompte_credit.getEntree(),
+//                mvtCompte_credit.getSortie(), mvtCompte_credit.getCodeProject());
+//        insertMvt(entity_compte_credit); // pour le credit
+//        Entity_MvtCompte entity_mvtCompte_debit =
+//                new Entity_MvtCompte(mvtCompte_debit.getNumCompte(), mvtCompte_debit.getNumOperation(),
+//                        mvtCompte_debit.getDetails(), mvtCompte_debit.getQte(), mvtCompte_debit.getEntree(),
+//                        mvtCompte_debit.getSortie(), mvtCompte_debit.getCodeProject());
+//        insertMvt(entity_mvtCompte_debit); // pour le debit
     }
 
     private class inserMvttAsyncTask extends AsyncTask<Entity_MvtCompte, Void, Void>
@@ -294,13 +324,13 @@ public class PayementRepository {
         switch (code)
         {
             case 404:
-                Toast.makeText(application, "server not found.", Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Serveur introuvable", Toast.LENGTH_LONG).show();
                 break;
             case 500:
-                Toast.makeText(application, "server broken.", Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Erreur serveur", Toast.LENGTH_LONG).show();
                 break;
             default:
-                Toast.makeText(application, "Unknown problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(application, "Problème inconnu", Toast.LENGTH_LONG).show();
                 break;
         }
     }
